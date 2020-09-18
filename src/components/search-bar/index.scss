@@ -1,0 +1,112 @@
+$search-bar-font-size: 14PX;
+$search-bar-input-height: 30PX;
+$search-bar-input-padding: 25PX;
+$search-bar-btn-padding: 10PX;
+$search-bar-placeholder-padding: 12PX;
+$search-bar-input-bg-color: #fff;
+$search-bar-input-color: #333;
+$search-bar-placholder-color: #999;
+
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  height: 100px;
+  background-color: #f3f3f3;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  /* elements */
+  &__input-cnt {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    height: $search-bar-input-height;
+    background-color: $search-bar-input-bg-color;
+    border-radius: 4PX;
+    overflow: hidden;
+    display: flex;
+  }
+
+  &__placeholder-wrap {
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    padding: 0 $search-bar-placeholder-padding;
+    height: $search-bar-input-height;
+    line-height: 0;
+    vertical-align: middle;
+    opacity: 1;
+    transition: flex 0.3s;
+
+    .icon {
+      color: $search-bar-placholder-color;
+      flex-shrink: 0;
+    }
+  }
+
+  &__placeholder {
+    margin-left: $search-bar-placeholder-padding;
+    color: $search-bar-placholder-color;
+    font-size: $search-bar-font-size;
+    flex-shrink: 0;
+  }
+
+  &__input {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $search-bar-input-height !important;
+    padding: 0 $search-bar-input-padding + $search-bar-placeholder-padding;
+    color: $search-bar-input-color;
+    font-size: $search-bar-font-size !important;
+    text-align: left;
+    background-color: transparent;
+    transition: width 0.3s;
+    box-sizing: border-box;
+  }
+
+  &__clear {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    right: $search-bar-placeholder-padding;
+    height: $search-bar-input-height;
+    width: $search-bar-input-padding;
+    color: $search-bar-placholder-color;
+    font-size: $search-bar-font-size;
+    line-height: 0;
+    vertical-align: middle;
+  }
+
+  &__action {
+    flex: none;
+    display: block;
+    margin-left: 10PX;
+    padding: 0 $search-bar-btn-padding;
+    height: $search-bar-input-height;
+    color: #6190E8;
+    font-size: $search-bar-font-size;
+    line-height: $search-bar-input-height;
+    border-radius: 4PX;
+    // background-color: #6190E8;
+    transition: margin-right 0.3s, opacity 0.3s;
+    opacity: 0;
+  }
+
+  /* modifiers */
+  &--fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+}

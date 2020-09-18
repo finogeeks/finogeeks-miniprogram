@@ -1,0 +1,102 @@
+.room_item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 136px;
+  padding: 0 20px;
+  border-bottom: 1px solid #EEEEEE;
+  position: relative;
+  .hide-btn {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+  .avatar {
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+    background-color: #EEEEEE;
+    border: 1px solid #EEEEEE;
+    border-radius: 10px;
+  }
+  .info {
+    min-width: 100px;
+    flex-grow: 1;
+    padding-left: 20px;
+    .title {
+      display: block;
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 34px;
+      color: #333333;
+      .room-name{
+        display: inline-block;
+        vertical-align: middle;
+        max-width: calc(100% - 45PX);
+        margin-right: 5PX;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .headwear{
+        color: #4285f4;
+        font-size: 20rpx;
+        border: 2rpx solid #4285f4;
+        border-radius: 6rpx;
+        display: inline-block;
+        padding: 0 6rpx;
+        height: 34rpx;
+        box-sizing: border-box;
+        line-height: 30rpx;
+        vertical-align: middle;
+        margin-top: -2rpx;
+      }
+      .headwear-bot{
+        font-size: 22rpx;
+        border-radius: 6rpx;
+        display: inline-block;
+        padding: 0 10rpx;
+        height: 34rpx;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        line-height: 34rpx;
+        vertical-align: middle;
+        margin-top: -2rpx;
+        background-color: #fef5e2;
+        color: #e0bc68;
+
+      }
+    }
+    .message {
+      display: block;
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 28px;
+      color: #9B9B9B;
+    }
+  }
+  .time {
+    flex-grow: 0;
+    flex-shrink: 0;
+    color: #9B9B9B;
+    font-size: 24px;
+    align-self: flex-start;
+    margin-top: 24px;
+  }
+}
+.room_item:active {
+  background-color: #EEEEEE;
+}

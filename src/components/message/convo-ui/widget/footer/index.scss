@@ -1,0 +1,17 @@
+.convo-footer {
+  // height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  height: 88px;
+  color: #333;
+
+  .footer-icon {
+    color: #ced2d6;
+  }
+}
+
+.convo-footer-hover {
+  background-color: #d9d9d9;
+}

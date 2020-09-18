@@ -1,0 +1,71 @@
+.bubble {
+  // width: 470px;
+  // height: 138px;
+  border-radius: 10px;
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  >.info {
+    flex: 1;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100%;
+    >.title {
+      width: 320px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      font-weight: normal;
+      font-size: 32px;
+      color: #333333;
+    }
+    >.size {
+      color: #9b9b9b;
+      font-size: 28px;
+    }
+  }
+  >.icon {
+    width: 90px;
+    height: 90px;
+    min-width: 90px;
+    border-radius: 6px;
+    font-size: 90px;
+    line-height: 1;
+    overflow: hidden;
+    &.pdf::before {
+      content: '\e60a';
+      color: #EC6452;
+    }
+    &.xlsx::before {
+      content: '\e60b';
+      color: #3BAC75;
+    }
+    &.other::before {
+      content: '\e60c';
+      color: #C9A486;
+    }
+    &.docx::before {
+      content: '\e60d';
+      color: #3A7FBF;
+    }
+    &.pptx::before {
+      content: '\e611';
+      color: #FF733B;
+    }
+ }
+}
+.secret-bubble{
+  line-height: 40rpx;
+  font-size: 30rpx;
+  padding: 20rpx;
+  max-width: 530rpx;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #666666;
+  font-style: italic;
+}

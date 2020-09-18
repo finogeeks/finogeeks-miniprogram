@@ -1,0 +1,3 @@
+export const SET_USER_SESSION = 'SET_USER_SEESION';
+export const SET_USER_INFO = 'SET_USER_INFO';
+export const SET_USER_LOCATION = 'SET_USER_LOCATION';

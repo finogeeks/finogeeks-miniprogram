@@ -1,0 +1,36 @@
+.record-wrap {
+  width: 100vw;
+  height: 100px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  box-sizing: border-box;
+  padding: 0 20px;
+  >.status {
+    color: #666666;
+    width: 300px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    >.time {
+      color: #ea4335;
+      font-size: 40px;
+    }
+  }
+  >.cancel {
+    color: #4285f4;
+    margin: auto;
+    width: 200px;
+    text-align: center;
+  }
+  >.icon {
+    width: 200px;
+    font-size: 60px;
+    color: #1C4EAB;
+    text-align: right;
+    line-height: 1;
+  }
+}

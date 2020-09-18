@@ -1,0 +1,15 @@
+.room_avatar {
+  width: 100px;
+  height: 100px;
+  background-color: #eeeeee;
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+  overflow: hidden;
+  white-space: normal;
+  justify-content: space-around;
+  align-content: space-around;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}

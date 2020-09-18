@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["./src/components/*"],
+      "@/utils/*": ["./src/utils/*"],
+      "@/service/*": ["./src/service/*"],
+      "@/services/*": ["./src/services/*"],
+      "@/assets/*": ["./src/assets/*"],
+      "@/actions/*": ["./src/store/actions/*"],
+      "@/reducers/*": ["./src/store/reducers/*"],
+      "@/constants/*": ["./src/constants/*"],
+      "@/router/*": ["./src/router/*"],
+      "@/matrix/*": ["./src/matrix/*"],
+      "@/model/*": ["./src/model/*"]
+    }
+  }
+}

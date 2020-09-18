@@ -1,0 +1,23 @@
+.grid {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-direction: column;
+  .text-area {
+    font-size: 30px;
+    padding: 24px 30px;
+    background-color: #fff;
+    border-radius: 10px;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    c-widget {
+      flex: 1;
+    }
+  }
+  
+}

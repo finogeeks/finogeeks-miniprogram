@@ -1,0 +1,40 @@
+module.exports = {
+  'extEnable': true,
+  'extAppid': 'wx9f6a2a64040a332a',
+  'directCommit': false,
+  'ext': {
+    'APP_ID': 'wx9f6a2a64040a332a',
+    'WORK_APP_ID': 'wxae565e53a45f4200',
+    'APP_NAME': '工行在线',
+    'HS_DOMAIN': '666666.finogeeks.com',
+    'BASE_URL': process.env.BASE_URL,
+    'INTRO': '广东工行线上金融服务平台\n寻找您身边的客户经理',
+    'LOGO': '../../assets/common/icbc_share.png',
+    'SHARE_IMG': '../../assets/common/icbc_share.png',
+    'THEME_COLOR': {
+      'NAV_bg': '#C7000B',
+      'TP_n': '#C7000B',
+      'TP_p': '#9F0008',
+      'TP_d': '#F3CCCE',
+      'Btn_n': '#C7000B',
+      'Btn_p': '#9F0008',
+      'Btn_d': '#F3CCCE',
+      'Bubble_Host_fill': '#FFF1F1',
+      'Bubble_Host_border': '#FFD5D3',
+      'Bubble_Guest_fill': '#FFFFFF',
+      'Bubble_Guest_border': '#CFCFCF',
+    },
+    'CUSTOM_CONFIG': {
+      'DISPATCH_TIMEOUT_REDIRECT': 'leave-msg',
+      'LEAVE_MESSAGE_SELECT_LOCATION': true,
+      'FEATURE_FORCE_CONSULTING_WITH_PHONE': true,
+      'FEATURE_AUTOMATIC_ADVISORY': true,
+    },
+    "BUSINESS_URL": [
+      "https://gd.dccnet.com.cn",
+      "https://gdfdcrcj.icbc.com.cn",
+      "https://gdwebappl-test.dccnet.com.cn",
+      "https://gdwebappl.icbc.com.cn"
+    ],
+  },
+};

@@ -1,0 +1,6 @@
+const PREFIX = 'ADVISOR_';
+
+export const SET_ORDER_ID = PREFIX + 'SET_ORDER_ID';
+export const SET_ORDER_RANK = PREFIX + 'SET_ORDER_RANK';
+export const SET_ORDER_STATUS = PREFIX + 'SET_ORDER_STATUS';
+export const INIT_ORDER = PREFIX + 'INIT_ORDER';

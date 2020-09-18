@@ -1,0 +1,32 @@
+.convo-header {
+  // height: 80px;
+  // line-height: 80px;
+  // background-color: #fafafa;
+  // padding-left: 30px;
+  color: #333;
+  padding: 0 30px;
+  height: 88px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .title {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    color: #333;
+    .icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+  }
+
+  .time {
+    font-size: 24px;
+    color: #b2b2b2;
+  }
+
+}

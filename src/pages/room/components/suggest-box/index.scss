@@ -1,0 +1,28 @@
+.suggest {
+  width: 100vw;
+  background-color: #ffffff;
+  .item {
+    height: 88px;
+    font-size: 32px;
+    text-align: left;
+    padding: 22px 30px;
+    box-sizing: border-box;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border-bottom: 1px solid #d9d9d9;
+    &:last-child {
+      border-bottom: none;
+    }
+    &:active {
+      background: #D9D9D9;
+    }
+    .text {
+      color: #333333;
+    }
+    .highlight {
+      color: #C7000B;
+    }
+  }
+}

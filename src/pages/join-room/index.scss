@@ -1,0 +1,198 @@
+.index {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  .room-title{
+    height: 232rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .room-name{
+      color: rgb(51,51,51);
+      font-size: 30rpx;
+      margin-top: 24rpx;
+      line-height: 34rpx;
+      height: 36rpx;
+      overflow: show;
+      .room-name-suffix{
+        display: inline-block;
+        border: 1rpx solid rgb(66,133,244);
+        border-radius: 6rpx;
+        width: 56rpx;
+        height: 34rpx;
+        box-sizing: border-box;
+        vertical-align: middle;
+        font-size: 20rpx;
+        color: rgb(66,133,244);
+        line-height: 31rpx;
+        text-align: center;
+      }
+    }
+  }
+  .e-bottom-line{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2rpx;
+    background-color: #d9d9d9
+  }
+  .e-top-line{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2rpx;
+    background-color: #d9d9d9
+  }
+  .room-tools{
+    height: 166rpx;
+    background-color: #ffffff;
+    position: relative;
+    display: flex;
+    .room-tool{
+      width: 200rpx;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .room-tool-img{
+        width: 60rpx;
+        height: 60rpx;
+      }
+      .room-tool-name{
+        color: rgb(86,96,112);
+        font-size: 28rpx;
+        margin-top: 10rpx;
+      }
+    }
+  }
+  .room-members-title{
+    height: 70rpx;
+    color: rgb(153,153,153);
+    font-size: 28rpx;
+    padding: 16rpx 30rpx;
+    box-sizing: border-box;
+  }
+  .room-members-content{
+    height: 126rpx;
+    background-color: #ffffff;
+    position: relative;
+    display: flex;
+    align-items: center;
+    .room-member{
+      width: calc(100% - 176rpx);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      .room-member-img{
+        width: 80rpx;
+        height: 80rpx;
+        margin-left: 21rpx;
+        border-radius: 10rpx;
+        flex-shrink: 0;
+      }
+    }
+    .room-member-add{
+      display: inline-flex;
+      width: 78rpx;
+      margin-left: 22rpx;
+      justify-content: center;
+      align-items: center;
+      height: 78rpx;
+      border: 1rpx solid rgb(200,200,200);
+      border-radius: 15rpx;
+      box-sizing: border-box;
+    }
+    .room-member-more{
+      display: inline-flex;
+      width: 74rpx;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .bottom-btn{
+    background-color: rgb(66,133,244);
+    height: 98rpx;
+    width: calc(100% - 80rpx);
+    margin-left: 50%;
+    transform: translate(-50%,0);
+    color: rgb(255,255,255);
+    font-size: 36rpx;
+    border-radius: 10rpx;
+    text-align: center;
+    line-height: 98rpx;
+    margin-top: 34rpx;
+    margin-bottom: 34rpx;
+    &.cancle{
+      background-color: rgb(234,67,53);
+    }
+  }
+  .operate-container{
+    margin-top: 30rpx;
+    background-color: #ffffff;
+    position: relative;
+    border-top: 2rpx solid #d9d9d9;
+    border-bottom: 2rpx solid #d9d9d9;
+    .operate-item{
+      height: 88rpx;
+      line-height: 88rpx;
+      padding: 0 32rpx;
+      position: relative;
+      .item-name{
+        display: inline-block;
+        font-size: 34rpx;
+      }
+      .item-act{
+        float: right;
+        font-size: 32rpx;
+        color: rgb(155,155,155);
+        .act-name{
+          display: inline-block;
+          margin-right: 28rpx;
+        }
+        .switch-container{
+          display: inline-block;
+          width: 102rpx;
+          height: 62rpx;
+          background-color: #cccccc;
+          border-radius: 31rpx;
+          vertical-align: middle;
+          box-sizing: border-box;
+          &.active{
+            background-color: rgb(66,133,244);
+            .switch-btn{
+              transform: translate(42rpx,1rpx);
+            }
+          }
+          .switch-btn{
+            width:62rpx;
+            height:62rpx;
+            transform: translate(1rpx,1rpx);
+          }
+        }
+      }
+      .border-line{
+        height: 2rpx;
+        left: 30rpx;
+        right: 0;
+        background-color: rgb(216,216,216);
+        position: absolute;
+        transform: translate(0,-300%);
+      }
+    }
+  }
+  .more-image{
+    width: 14rpx;
+    height: 22rpx;
+    vertical-align: middle;
+  }
+}
+page{
+  background-color: rgb(250,250,250);
+}

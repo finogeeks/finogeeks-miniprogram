@@ -1,0 +1,45 @@
+$component: ".tabs";
+
+#{$component} {
+  width: 100%;
+  height: 100%;
+  &__item {
+    &-title {
+      font-size: 30px;
+      padding: 0 10px;
+      height: 84px;
+      line-height: 84px;
+    }
+    &--active {
+      #{$component}__item-title {
+        font-weight: bold;
+      }
+    }
+  }
+
+  &__header {
+    position: relative;
+    width: 100%;
+    height: 88px;
+    display: flex;
+    justify-content: space-around;
+    white-space: nowrap;
+    background-color: #fff;
+    border-bottom: 1px solid #d9d9d9;
+    box-sizing: border-box;
+  }
+  &__fixed {
+    position: fixed;
+    left: 0;
+    right: 0;
+  }
+
+  &__body {
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  &__underline {
+  }
+}

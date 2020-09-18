@@ -1,0 +1,44 @@
+.attention {
+  margin: initial;
+  padding: initial;
+  font-size: initial;
+  line-height: initial;
+  border-radius: initial;
+  background-color: #fff;
+
+  &__btn {
+    margin-left: auto;
+    border-radius: 25px;
+    width: 120px !important;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  &__active {
+    margin-left: auto;
+    border-radius: 25px;
+    width: 120px !important;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    justify-content: center;
+  }
+
+  &__text {
+    font-size: 24px;
+    line-height: 24px;
+  }
+  &__text_active {
+    font-size: 24px;
+    line-height: 24px;
+  }
+  .iconfont {
+    font-size: 20px;
+    line-height: 20px;
+    margin-right: 5px;
+  }
+}

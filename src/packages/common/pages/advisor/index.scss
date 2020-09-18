@@ -1,0 +1,96 @@
+.advisor {
+  background-color: #EFEFF4;
+  height: 100%;
+  .head {
+    height: 372px;
+    position: relative;
+    overflow: hidden;
+    >.bg {
+      position: absolute;
+      top: -14px;
+      left: -10%;
+      width: 120%;
+      height: 400px;
+      z-index: 0;
+      background-size: 100% auto;
+      background-position: center;
+      background-color: #ffffff;
+      background-repeat: no-repeat;
+      filter: grayscale(50%) blur(6px) brightness(80%);
+    }
+    >.content {
+      width: 100%;
+      height: 372px;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      position: relative;
+      color: #FFFFFF;
+      >.avatar {
+        width: 140px;
+        height: 140px;
+        border-radius: 80px;
+        overflow: hidden;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        border: solid 5px #ffffff;
+        margin-bottom: 5px;
+      }
+      >.title {
+        font-size: 34px;
+        margin-bottom: 28px;
+        font-weight: bold;
+      }
+      >.info {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        font-size: 28px;
+        >.seperate {
+          margin: 0 20px;
+        }
+        >.tip {
+          >.label {
+            margin-right: 40px;
+          }
+        }
+      }
+    }
+  }
+  >.content {
+    margin: 30px 0;
+    background-color: #ffffff;
+    font-size: 32px;
+    .item {
+      min-height: 88px;
+      border-bottom: 1px solid #D9D9D9;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      text-align: left;
+      box-sizing: border-box;
+      padding: 20px 30px;
+      &:last-child {
+        border-bottom: none;
+      }
+      >.label {
+        width: 230px;
+        min-width: 230px;
+        color: #666666;
+      }
+      >.value {
+        color: #333333;
+      }
+    }
+  }
+}
+
+
+
+

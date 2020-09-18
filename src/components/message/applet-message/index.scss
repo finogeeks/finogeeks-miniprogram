@@ -1,0 +1,113 @@
+.bubble {
+  // background: #FFFFFF;
+  border: 1px solid #CFCFCF;
+  border-radius: 10px;
+  width: 460px;
+  overflow: hidden;
+
+  .content {
+    padding: 20px;
+    .intro-text {
+      overflow : hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      font-size: 30px;
+      color: #333333;
+    }
+    .intro-detail {
+      width: 420px;
+      height: 100px;
+      background-color: #f5f5f6;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-top: 10px;
+      padding-left: 10px;
+
+      .image {
+        width: 80px;
+        height: 80px;
+        margin-right: 16px;
+        background-color: #fff;
+      }
+      .text {
+        width: 280px;
+        color: #333;
+        font-size: 28px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+    }
+    .thumb {
+      width: 420px;
+      height: 336px;
+    }
+    .text {
+      line-height: 45px;
+      font-size: 32px;
+      color: #333333;
+      margin-bottom: 14px;
+    }
+    .thumb-error {
+      width: 420px;
+      height: 336px;
+      background: #ededed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .iconfont {
+      font-size: 100px;
+      line-height: 1;
+      color: #D9D9D9;
+    }
+  }
+
+
+  .header {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 20px;
+    margin-bottom: -7px;
+    margin-top: 20px;
+
+    .app-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .app-title {
+      font-size: 26px;
+      color: #666666;
+    }
+  }
+
+  .footer {
+    height: 45px;
+    border-top: 1px solid #cfcfcf;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 20px;
+
+    .app-avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+
+    .text {
+      font-size: 20px;
+      color: #9B9B9B;
+    }
+  }
+}

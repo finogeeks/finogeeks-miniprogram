@@ -1,0 +1,16 @@
+.convo-button {
+  width: 256px;
+	height: 84px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  border: 1px solid #cfcfcf;
+  flex: 1;
+  background-color: #fff;
+}
+
+.convo-button-hover {
+  background-color: #d9d9d9;
+}
