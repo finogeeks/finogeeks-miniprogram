@@ -1,7 +1,0 @@
-<block wx:if="{{$taroCompReady}}">
-    <view class="table"><text class="text-area">{{text}}</text>
-        <view class="row" wx:key="idx" wx:for="{{loopArray14}}" wx:for-item="row" wx:for-index="idx">
-            <c-widget wx:key="index" wx:for="{{row.$anonymousCallee__4}}" wx:for-item="widget" wx:for-index="index" compid="{{widget.$compid__54}}"></c-widget>
-        </view>
-    </view>
-</block>

@@ -1,6 +1,0 @@
-<block wx:if="{{$taroCompReady}}">
-    <block wx:if="{{type === 'video' && url}}">
-        <video src="{{url}}" poster="{{poster}}" controls="{{true}}" initial-time="0" id="video" class="media" autoplay="{{true}}"></video>
-    </block>
-    <image class="media" mode="aspectFit" src="{{poster}}" wx:else></image>
-</block>

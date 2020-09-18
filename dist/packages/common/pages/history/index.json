@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "message": "../../../../components/message/index"
-  },
-  "navigationBarTitleText": "聊天记录"
-}

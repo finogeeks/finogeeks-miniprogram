@@ -1,6 +1,0 @@
-
-.composite {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  overflow: hidden;
-  border-radius: 10rpx; }

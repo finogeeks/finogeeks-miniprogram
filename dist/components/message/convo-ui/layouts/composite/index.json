@@ -1,8 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "clinear": "../linear/index",
-    "c-table": "../table/index",
-    "c-grid": "../grid/index"
-  }
-}

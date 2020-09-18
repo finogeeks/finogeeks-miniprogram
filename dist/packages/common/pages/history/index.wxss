@@ -1,8 +1,0 @@
-
-.history {
-  position: relative;
-  height: 100%;
-  overflow: hidden;
-  background-color: #eee; }
-  .history .message-wrap {
-    margin: 28rpx 0; }

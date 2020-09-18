@@ -1,5 +1,0 @@
-<block wx:if="{{$taroCompReady}}">
-    <view class="linear" style="{{anonymousState__temp}}"><text class="normal-text">{{text}}</text>
-        <c-widget wx:key="idx" wx:for="{{loopArray13}}" wx:for-item="widget" wx:for-index="idx" compid="{{widget.$compid__53}}"></c-widget>
-    </view>
-</block>

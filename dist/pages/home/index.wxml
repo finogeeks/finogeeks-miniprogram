@@ -1,9 +1,0 @@
-<block wx:if="{{$taroCompReady}}">
-    <view class="index">
-        <block wx:if="{{showList}}">
-            <scroll-view class="page_main" scroll-y="{{true}}" scroll-with-animation="{{true}}" scroll-top="0" style="{{anonymousState__temp}}" lower-threshold="20" upper-threshold="20" enable-back-to-top="{{true}}">
-                <room-item wx:key="$original.id" wx:for="{{loopArray0}}" wx:for-item="room" wx:for-index="_anonIdx2" compid="{{room.$compid__0}}"></room-item>
-            </scroll-view>
-        </block>
-    </view>
-</block>

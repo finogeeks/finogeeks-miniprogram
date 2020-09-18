@@ -1,8 +1,0 @@
-{
-  "usingComponents": {
-    "list-item": "../../../../components/list-item/index"
-  },
-  "navigationBarTitleText": "设置",
-  "navigationBarTextStyle": "black",
-  "disableScroll": true
-}

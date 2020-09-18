@@ -1,6 +1,0 @@
-<block wx:if="{{$taroCompReady}}">
-    <view class="suggest">
-        <view bindtap="handleSelect" wx:key="index" class="item" wx:for="{{data}}" wx:for-item="item" wx:for-index="index" data-e-tap-so="this" data-e-tap-a-a="{{item.text}}"><text wx:key="i" class="{{text.type}}" wx:for="{{item.nodes}}" wx:for-item="text" wx:for-index="i">{{text.value}}</text>
-        </view>
-    </view>
-</block>

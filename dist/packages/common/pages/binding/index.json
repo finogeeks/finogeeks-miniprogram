@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "list-item": "../../../../components/list-item/index"
-  },
-  "navigationBarTitleText": "手机绑定",
-  "navigationBarTextStyle": "black"
-}

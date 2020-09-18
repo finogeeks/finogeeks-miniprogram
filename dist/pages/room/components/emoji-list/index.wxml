@@ -1,9 +1,0 @@
-<block wx:if="{{$taroCompReady}}">
-    <swiper class="emoji-wrap" indicator-color="#D9D9D9" indicator-active-color="#9B9B9B" vertical="{{false}}" circular="{{true}}" indicator-dots="{{true}}" style="{{anonymousState__temp}}">
-        <swiper-item class="group-wrap" wx:key="index" wx:for="{{emojis}}" wx:for-item="group" wx:for-index="index">
-            <view class="group">
-                <view class="item" wx:key="emoji" bindtap="handleSelect" wx:for="{{group}}" wx:for-item="emoji" wx:for-index="_anonIdx2" data-e-tap-so="this" data-e-tap-a-a="{{emoji}}">{{emoji}}</view>
-            </view>
-        </swiper-item>
-    </swiper>
-</block>

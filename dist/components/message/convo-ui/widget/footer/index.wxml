@@ -1,5 +1,0 @@
-<block wx:if="{{$taroCompReady}}">
-    <view class="convo-footer" hover-class="convo-footer-hover"><text>{{title}}</text>
-        <view class="icon footer-icon"></view>
-    </view>
-</block>

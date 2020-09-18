@@ -1,5 +1,0 @@
-<block wx:if="{{$taroCompReady}}">
-    <view>
-        <web-view src="{{anonymousState__temp}}" bindmessage="onMessage"></web-view>
-    </view>
-</block>

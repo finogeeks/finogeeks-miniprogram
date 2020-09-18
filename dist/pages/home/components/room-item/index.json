@@ -1,7 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "room-badge": "../../../../components/room-badge/index",
-    "room-avatar": "../../../../components/room-avatar/index"
-  }
-}

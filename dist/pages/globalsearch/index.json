@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "nav-bar": "../../components/nav-bar/index",
-    "room-avatar": "../../components/room-avatar/index"
-  },
-  "navigationStyle": "custom"
-}
