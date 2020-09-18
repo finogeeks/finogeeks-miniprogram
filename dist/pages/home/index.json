@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "room-item": "./components/room-item/index"
+  },
+  "navigationBarTitleText": "消息",
+  "navigationBarTextStyle": "black",
+  "disableScroll": true
+}

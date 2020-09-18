@@ -1,0 +1,14 @@
+<block wx:if="{{$taroCompReady}}">
+    <block wx:if="{{!message || !message.content || !message.content.info}}">
+        <view></view>
+    </block>
+    <block wx:elif="{{!message.content.flag}}">
+        <view class="bubble" bindtap="handleOpenFile">
+            <view class="info"><text class="title">{{message.content.body}}</text><text class="size">{{_$anonymousState__temp}}</text>
+            </view>
+            <view class="{{'icon ' + fileType}}"></view>
+        </view>
+    </block>
+    <view class="secret-bubble" wx:else><text class="secret">[保密消息暂时仅支持在手机上查看]</text>
+    </view>
+</block>

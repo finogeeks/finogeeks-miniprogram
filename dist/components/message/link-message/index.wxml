@@ -1,0 +1,18 @@
+<block wx:if="{{$taroCompReady}}">
+    <block wx:if="{{!message || !message.content || !message.content.info}}">
+        <view></view>
+    </block>
+    <view class="bubble" bindtap="handleOpenLink" wx:else>
+        <view class="content">
+            <view class="info"><text class="title">{{title}}</text>
+            </view>
+            <view class="{{'icon ' + (icon || '')}}">
+                <block wx:if="{{image}}">
+                    <image class="image" mode="aspectFill" src="{{image}}"></image>
+                </block>
+            </view>
+        </view>
+        <view class="footer text-overflow"><text class="text">{{url}}</text>
+        </view>
+    </view>
+</block>

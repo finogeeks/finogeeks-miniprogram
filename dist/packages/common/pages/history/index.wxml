@@ -1,0 +1,9 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="history">
+        <scroll-view class="records" scroll-y="{{true}}" scroll-with-animation="{{false}}" style="{{anonymousState__temp}}">
+            <view id="message-wrap" class="message-wrap" wx:key="$original.id" wx:for="{{loopArray6}}" wx:for-item="message" wx:for-index="_anonIdx2">
+                <message compid="{{message.$compid__24}}"></message>
+            </view>
+        </scroll-view>
+    </view>
+</block>

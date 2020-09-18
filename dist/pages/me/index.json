@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "nav-bar": "../../components/nav-bar/index",
+    "avatar": "../../components/avatar/index",
+    "list-item": "../../components/list-item/index"
+  },
+  "navigationBarTitleText": "我的",
+  "navigationBarTextStyle": "black",
+  "navigationStyle": "custom"
+}

@@ -1,0 +1,5 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="avatar" style="{{anonymousState__temp}}">
+        <image class="image" style="{{anonymousState__temp2}}" lazy-load="{{true}}" mode="aspectFill" src="{{url}}" binderror="onAvatarError"></image>
+    </view>
+</block>

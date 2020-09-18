@@ -1,0 +1,124 @@
+
+.room_item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 136rpx;
+  padding: 0 20rpx;
+  border-bottom: 1rpx solid #EEEEEE;
+  position: relative; }
+  .room_item .hide-btn {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0; }
+  .room_item .avatar {
+    -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+        -ms-flex-positive: 0;
+            flex-grow: 0;
+    -webkit-flex-shrink: 0;
+        -ms-flex-negative: 0;
+            flex-shrink: 0;
+    width: 100rpx;
+    height: 100rpx;
+    background-color: #EEEEEE;
+    border: 1rpx solid #EEEEEE;
+    border-radius: 10rpx; }
+  .room_item .info {
+    min-width: 100rpx;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    padding-left: 20rpx; }
+    .room_item .info .title {
+      display: block;
+      width: 100%;
+      height: 50rpx;
+      line-height: 50rpx;
+      overflow: hidden;
+      -o-text-overflow: ellipsis;
+         text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 34rpx;
+      color: #333333; }
+      .room_item .info .title .room-name {
+        display: inline-block;
+        vertical-align: middle;
+        max-width: calc(100% - 45PX);
+        margin-right: 5PX;
+        overflow: hidden;
+        -o-text-overflow: ellipsis;
+           text-overflow: ellipsis;
+        white-space: nowrap; }
+      .room_item .info .title .headwear {
+        color: #4285f4;
+        font-size: 20rpx;
+        border: 2rpx solid #4285f4;
+        border-radius: 6rpx;
+        display: inline-block;
+        padding: 0 6rpx;
+        height: 34rpx;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        line-height: 30rpx;
+        vertical-align: middle;
+        margin-top: -2rpx; }
+      .room_item .info .title .headwear-bot {
+        font-size: 22rpx;
+        border-radius: 6rpx;
+        display: inline-block;
+        padding: 0 10rpx;
+        height: 34rpx;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        line-height: 34rpx;
+        vertical-align: middle;
+        margin-top: -2rpx;
+        background-color: #fef5e2;
+        color: #e0bc68; }
+    .room_item .info .message {
+      display: block;
+      width: 100%;
+      height: 50rpx;
+      line-height: 50rpx;
+      overflow: hidden;
+      -o-text-overflow: ellipsis;
+         text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 28rpx;
+      color: #9B9B9B; }
+  .room_item .time {
+    -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+        -ms-flex-positive: 0;
+            flex-grow: 0;
+    -webkit-flex-shrink: 0;
+        -ms-flex-negative: 0;
+            flex-shrink: 0;
+    color: #9B9B9B;
+    font-size: 24rpx;
+    -webkit-align-self: flex-start;
+        -ms-flex-item-align: start;
+            align-self: flex-start;
+    margin-top: 24rpx; }
+
+.room_item:active {
+  background-color: #EEEEEE; }

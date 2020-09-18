@@ -1,0 +1,18 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="tool-wrap" style="{{anonymousState__temp}}">
+        <view class="item">
+            <view class="wrap" bindtap="handleChooseImage"></view><text class="name">照片</text>
+        </view>
+        <view class="item">
+            <view class="wrap" bindtap="handleTakePhoto"></view><text class="name">拍照</text>
+        </view>
+        <block wx:if="{{roomType === 'SMART_BOT'}}">
+            <view class="item">
+                <view class="wrap" bindtap="handleLeaveMessage"></view><text class="name">留言</text>
+            </view>
+        </block>
+        <view class="item">
+            <view class="wrap" bindtap="handleChooseLocation"></view><text class="name">位置</text>
+        </view>
+    </view>
+</block>

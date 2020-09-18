@@ -1,0 +1,21 @@
+
+.bubble > .image {
+  width: 100%;
+  height: 100%; }
+
+.bubble > .icon {
+  position: absolute;
+  width: 80rpx;
+  height: 80rpx;
+  top: calc(50% - 40rpx);
+  left: calc(50% - 40rpx); }
+
+.secret-bubble {
+  line-height: 40rpx;
+  font-size: 30rpx;
+  padding: 20rpx;
+  max-width: 530rpx;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #666666;
+  font-style: italic; }

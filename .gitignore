@@ -1,6 +1,5 @@
 # Editor directories and files
 ## commitlint
 node_modules/
-dist/
 .idea
 .vscode

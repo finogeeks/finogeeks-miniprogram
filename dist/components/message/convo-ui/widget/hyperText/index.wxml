@@ -1,0 +1,4 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="convo-hyper-text"><text>{{title}}</text>
+    </view>
+</block>

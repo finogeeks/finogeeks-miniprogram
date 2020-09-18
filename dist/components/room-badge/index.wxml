@@ -1,0 +1,12 @@
+<block wx:if="{{$taroCompReady}}">
+    <block wx:if="{{text}}">
+        <view class="badge_wrapper">
+            <view class="room_badge"><text>{{text}}</text>
+            </view>
+            <slot></slot>
+        </view>
+    </block>
+    <view wx:else>
+        <slot></slot>
+    </view>
+</block>

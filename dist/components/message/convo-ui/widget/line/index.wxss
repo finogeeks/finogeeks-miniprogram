@@ -1,0 +1,4 @@
+
+.convo-line {
+  border-right: 30rpx solid #fff;
+  border-left: 30rpx solid #fff; }

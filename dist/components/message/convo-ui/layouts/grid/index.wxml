@@ -1,0 +1,7 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="grid">
+        <view class="row" wx:key="idx" wx:for="{{loopArray15}}" wx:for-item="row" wx:for-index="idx">
+            <c-widget wx:key="index" wx:for="{{row.$anonymousCallee__5}}" wx:for-item="widget" wx:for-index="index" compid="{{widget.$compid__55}}"></c-widget>
+        </view>
+    </view>
+</block>

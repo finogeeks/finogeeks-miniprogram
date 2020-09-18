@@ -1,0 +1,18 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="index">
+        <nav-bar compid="{{$compid__1}}"></nav-bar>
+        <view class="header">
+            <view class="upper" bindtap="goToAuthPage">
+                <avatar compid="{{$compid__2}}"></avatar>
+            </view>
+            <view class="bottom" bindtap="goToAuthPage"><text class="name">{{authModel.isAuth ? userInfo.name : '未登录'}}</text>
+            </view>
+        </view>
+        <scroll-view class="page_main" scroll-y="{{true}}" scroll-with-animation="{{true}}" scroll-top="0">
+            <view class="wrap">
+                <list-item compid="{{$compid__3}}"></list-item>
+            </view>
+            <view class="bottom-btn" bindtap="handleLogOut">退出登录</view>
+        </scroll-view>
+    </view>
+</block>

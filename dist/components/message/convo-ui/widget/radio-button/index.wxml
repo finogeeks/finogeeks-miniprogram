@@ -1,0 +1,6 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="radio-button" style="{{anonymousState__temp}}">
+        <block wx:if="{{icon}}">
+            <image class="icon" mode="aspectFill" src="{{icon}}"></image>
+        </block>{{title}}</view>
+</block>

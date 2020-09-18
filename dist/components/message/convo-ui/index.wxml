@@ -1,0 +1,16 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="convo-container">
+        <block wx:if="{{type === 'linear'}}">
+            <clinear compid="{{$compid__49}}"></clinear>
+        </block>
+        <block wx:if="{{type === 'table'}}">
+            <c-table compid="{{$compid__50}}"></c-table>
+        </block>
+        <block wx:if="{{type === 'grid'}}">
+            <c-grid compid="{{$compid__51}}"></c-grid>
+        </block>
+        <block wx:if="{{type === 'composite'}}">
+            <composite compid="{{$compid__52}}"></composite>
+        </block>
+    </view>
+</block>

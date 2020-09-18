@@ -1,0 +1,7 @@
+<block wx:if="{{$taroCompReady}}">
+    <block wx:if="{{!message || !message.content || !message.content}}">
+        <view></view>
+    </block>
+    <view class="bubble" wx:else><text selectable="{{true}}" decode="{{true}}" space="ensp" wx:key="index" wx:for="{{nodes}}" wx:for-item="node" wx:for-index="index">{{node.value}}</text>
+    </view>
+</block>

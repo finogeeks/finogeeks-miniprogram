@@ -1,0 +1,146 @@
+<block wx:if="{{$taroCompReady}}">
+    <view>
+        <view class="index">
+            <nav-bar compid="{{$compid__19}}"></nav-bar>
+            <view style="{{anonymousState__temp}}">
+                <view class="room-title">
+                    <room-avatar compid="{{$compid__20}}"></room-avatar>
+                    <view class="room-name">{{viewingRoom.name}}
+                        <block wx:if="{{roomtype}}">
+                            <view class="room-name-suffix">{{roomtype}}</view>
+                        </block>
+                    </view>
+                </view>
+                <view class="room-tools">
+                    <cover-view class="e-bottom-line"></cover-view>
+                    <cover-view class="e-top-line"></cover-view>
+                    <view class="room-tool">
+                        <image src="{{noticeImg}}" class="room-tool-img"></image>
+                        <view class="room-tool-name">公告</view>
+                    </view>
+                    <view class="room-tool">
+                        <image src="{{fileImg}}" class="room-tool-img"></image>
+                        <view class="room-tool-name">文件</view>
+                    </view>
+                </view>
+                <view class="room-members-title">{{isChannel ? '频道' : '群'}}成员（{{viewingRoom.members.length}}人）</view>
+                <view class="room-members-content">
+                    <cover-view class="e-bottom-line"></cover-view>
+                    <cover-view class="e-top-line"></cover-view>
+                    <view class="room-member">
+                        <image src="{{e.avatar}}" class="room-member-img" wx:for="{{viewingRoom.members}}" wx:for-item="e" wx:for-index="_anonIdx2"></image>
+                    </view>
+                    <view class="room-member-add">
+                        <image style="width: 38rpx;height: 38rpx;" src="{{plusImg}}"></image>
+                    </view>
+                    <view class="room-member-more">
+                        <image class="more-image" src="{{moreImg}}"></image>
+                    </view>
+                </view>
+            </view>
+            <block>
+                <block wx:if="{{isChannel}}">
+                    <view class="operate-container">
+                        <view class="operate-item">
+                            <view class="item-name">频道名称</view>
+                            <view class="item-act">
+                                <view class="act-name">{{viewingRoom.name}}</view>
+                                <image class="more-image" src="{{moreImg}}"></image>
+                            </view>
+                            <view class="border-line"></view>
+                        </view>
+                        <view class="operate-item">
+                            <view class="item-name">频道二维码</view>
+                            <view class="item-act">
+                                <image style="width: 34rpx;height: 34rpx;margin-right:28rpx;vertical-align: middle;" src="{{qrImg}}"></image>
+                                <image class="more-image" src="{{moreImg}}"></image>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+                <block wx:else>
+                    <block wx:if="{{powerLevel === 100}}">
+                        <view class="operate-container">
+                            <view class="operate-item">
+                                <view class="item-name">群名称</view>
+                                <view class="item-act">
+                                    <view class="act-name">{{viewingRoom.name}}</view>
+                                    <image class="more-image" src="{{moreImg}}"></image>
+                                </view>
+                                <view class="border-line"></view>
+                            </view>
+                            <view class="operate-item">
+                                <view class="item-name">群管理</view>
+                                <view class="item-act">
+                                    <image class="more-image" src="{{moreImg}}"></image>
+                                </view>
+                            </view>
+                        </view>
+                    </block>
+                </block>
+            </block>
+            <block>
+                <block wx:if="{{isChannel}}">
+                    <view class="operate-container">
+                        <view class="operate-item">
+                            <view class="item-name">查找聊天内容</view>
+                            <view class="item-act">
+                                <image class="more-image" src="{{moreImg}}"></image>
+                            </view>
+                            <view class="border-line"></view>
+                        </view>
+                        <view class="operate-item">
+                            <view class="item-name">频道管理</view>
+                            <view class="item-act">
+                                <image class="more-image" src="{{moreImg}}"></image>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="operate-container">
+                        <view class="operate-item">
+                            <view class="item-name">查找聊天内容</view>
+                            <view class="item-act">
+                                <image class="more-image" src="{{moreImg}}"></image>
+                            </view>
+                            <view class="border-line"></view>
+                        </view>
+                    </view>
+                </block>
+            </block>
+            <view class="operate-container">
+                <view class="operate-item">
+                    <view class="item-name">置顶</view>
+                    <view class="item-act">
+                        <view class="{{['switch-container', messageTopping ? 'active' : '']}}" bindtap="switchMessageTop">
+                            <image src="{{switchBtn}}" class="switch-btn"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <block>
+                <block wx:if="{{powerLevel === 100 && isArchive && isChannel}}">
+                    <view class="bottom-btn cancle" bindtap="handleCancleArchive">取消归档</view>
+                </block>
+                <block wx:else>
+                    <block>
+                        <block wx:if="{{powerLevel === 100 && !isArchive && isChannel}}">
+                            <view class="bottom-btn" bindtap="handleArchive">归档频道</view>
+                        </block>
+                        <block wx:else>
+                            <block>
+                                <block wx:if="{{isChannel}}">
+                                    <view class="bottom-btn" bindtap="handleQuitChannel">退出频道</view>
+                                </block>
+                                <block wx:else>
+                                    <view class="bottom-btn" bindtap="handleQuitGroup">退出群聊</view>
+                                </block>
+                            </block>
+                        </block>
+                    </block>
+                </block>
+            </block>
+        </view>
+    </view>
+</block>

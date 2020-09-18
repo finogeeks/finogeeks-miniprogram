@@ -1,0 +1,66 @@
+{
+  "pages": [
+    "pages/login/index",
+    "pages/home/index",
+    "pages/me/index",
+    "pages/room/index",
+    "pages/media-preview/index",
+    "pages/contacts/index",
+    "pages/globalsearch/index",
+    "pages/type-search/index",
+    "pages/room-detail/index",
+    "pages/join-room/index",
+    "packages/common/pages/webview/index",
+    "packages/common/pages/binding/index",
+    "packages/common/pages/history/index",
+    "packages/common/pages/leave-message/index",
+    "packages/common/pages/message-detail/index",
+    "packages/common/pages/privacy/index",
+    "packages/common/pages/settings/index"
+  ],
+  "tabBar": {
+    "backgroundColor": "#FFF",
+    "color": "#9B9B9B",
+    "borderStyle": "black",
+    "selectedColor": "#4285f4",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "消息",
+        "iconPath": "./assets/toolbar/messages_normal.png",
+        "selectedIconPath": "./assets/toolbar/messages_selected.png"
+      },
+      {
+        "pagePath": "pages/me/index",
+        "text": "我的",
+        "iconPath": "./assets/toolbar/me_normal.png",
+        "selectedIconPath": "./assets/toolbar/me_selected.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 45000,
+    "uploadFile": 90000,
+    "downloadFile": 90000
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wxf676eeae1babc746",
+    "wxae565e53a45f4200",
+    "wx840d3b17c78201d9",
+    "wxca32cd132ab78a69"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FAFAFA",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black"
+  },
+  "debug": true,
+  "plugins": {
+    "wxparserPlugin": {
+      "version": "0.2.1",
+      "provider": "wx9d4d4ffa781ff3ac"
+    }
+  }
+}

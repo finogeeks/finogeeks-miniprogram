@@ -1,0 +1,1 @@
+var fbemitter = { EventEmitter: require("./lib/BaseEventEmitter.js"), EmitterSubscription: require("./lib/EmitterSubscription.js") };module.exports = fbemitter;

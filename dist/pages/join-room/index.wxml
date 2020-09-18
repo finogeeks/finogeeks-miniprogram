@@ -1,0 +1,20 @@
+<block wx:if="{{$taroCompReady}}">
+    <view>
+        <view class="index">
+            <nav-bar compid="{{$compid__21}}"></nav-bar>
+            <view style="{{anonymousState__temp}}">
+                <view class="room-title">
+                    <room-avatar compid="{{$compid__22}}"></room-avatar>
+                    <view class="room-name">{{viewingRoom.name}}
+                        <block wx:if="{{roomtype}}">
+                            <view class="room-name-suffix">{{roomtype}}</view>
+                        </block>
+                    </view>
+                </view>
+            </view>
+            <view class="bottom-btn" bindtap="handleJoinRoom">加入频道</view>
+            <view style="padding: 20rpx 40rpx;font-size: 30rpx;color:#777777;border-top: 30rpx solid #f6f6f6;">频道公告</view>
+            <view style="margin: 20rpx 40rpx;font-size: 30rpx;color:#333333">{{anonymousState__temp2}}</view>
+        </view>
+    </view>
+</block>

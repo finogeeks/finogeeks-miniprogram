@@ -1,0 +1,25 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="convo-widget" bindtap="handleWidgetTap" style="{{anonymousState__temp}}">
+        <block wx:if="{{type === 'header'}}">
+            <c-header compid="{{$compid__59}}"></c-header>
+        </block>
+        <block wx:if="{{type === 'footer'}}">
+            <c-footer compid="{{$compid__60}}"></c-footer>
+        </block>
+        <block wx:if="{{type === 'item'}}">
+            <c-item compid="{{$compid__61}}"></c-item>
+        </block>
+        <block wx:if="{{type === 'button'}}">
+            <c-button compid="{{$compid__62}}"></c-button>
+        </block>
+        <block wx:if="{{type === 'line'}}">
+            <c-line compid="{{$compid__63}}"></c-line>
+        </block>
+        <block wx:if="{{type === 'hypertext'}}">
+            <c-hyper-text compid="{{$compid__64}}"></c-hyper-text>
+        </block>
+        <block wx:if="{{type === 'radioButton'}}">
+            <c-radio-button compid="{{$compid__65}}"></c-radio-button>
+        </block>
+    </view>
+</block>

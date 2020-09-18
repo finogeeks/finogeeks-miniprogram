@@ -1,0 +1,7 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="index">
+        <view class="container">
+            <list-item compid="{{$compid__25}}"></list-item>
+        </view>
+    </view>
+</block>

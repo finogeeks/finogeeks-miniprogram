@@ -1,0 +1,10 @@
+<block wx:if="{{$taroCompReady}}">
+    <block wx:if="{{!message || !message.content || !message.content.info}}">
+        <view></view>
+    </block>
+    <view class="{{'bubble ' + (isMy ? 'my' : '')}}" style="{{anonymousState__temp}}" bindtap="playVoice" wx:else><text>{{anonymousState__temp2}}"</text><text class="{{'icon ' + (isPlaying ? 'playing' : '')}}" style="{{anonymousState__temp3}}"></text>
+        <block wx:if="{{isPlaying}}">
+            <view class="progress" style="{{anonymousState__temp4}}"></view>
+        </block>
+    </view>
+</block>

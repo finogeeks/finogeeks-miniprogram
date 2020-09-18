@@ -1,0 +1,12 @@
+<block wx:if="{{$taroCompReady}}">
+    <block wx:if="{{!message || !message.content || !message.content.info}}">
+        <view></view>
+    </block>
+    <view class="bubble" bindtap="openAddress" wx:else>
+        <view class="content">
+            <view class="info"><text class="title text-overflow">{{name}}</text><text class="desc text-overflow">{{address}}</text>
+            </view>
+            <view class="icon"></view>
+        </view>
+    </view>
+</block>

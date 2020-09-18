@@ -1,0 +1,43 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="leave-message">
+        <view class="label">问题描述<text class="highlight">*</text>
+        </view>
+        <textarea class="question-text" maxlength="-1" show-confirm-bar="{{false}}" value="{{question}}" placeholder="{{questionPlaceholder}}" placeholder-class="question-text-placeholder" selection-start="0" bindinput="handleQuestionInput"></textarea>
+        <block wx:if="{{selectLocation}}">
+            <view class="region-info">
+                <picker mode="region" bindchange="handleRegionChange" value="{{region}}">
+                    <view class="picker">
+                        <view class="title">地区</view>
+                        <view class="value">{{region.length > 0 && !!region[0] ? region[0] + ' ' + region[1] + ' ' + region[2] : '请选择地区'}}
+                            <view class="right-icon"></view>
+                        </view>
+                    </view>
+                </picker>
+                <picker bindtap="checkRegion" bindchange="handleBankChange" range="{{bankList}}" range-key="name" value="{{selectIdx}}" disabled="{{region.length === 0 || notFindBank}}">
+                    <view class="picker top-border">
+                        <view class="title">网点</view>
+                        <view class="value">
+                            <block>
+                                <block wx:if="{{bankList[selectIdx]}}"><text class="bank-name">{{bankList[selectIdx].name}}</text>
+                                </block>
+                                <block wx:else>
+                                    <block>
+                                        <block wx:if="{{notFindBank}}"><text class="no-bank">暂无可选网点</text>
+                                        </block>
+                                        <block wx:else>{{'请选择网点'}}</block>
+                                    </block>
+                                </block>
+                            </block>
+                            <block wx:if="{{!notFindBank}}">
+                                <view class="right-icon"></view>
+                            </block>
+                        </view>
+                    </view>
+                </picker>
+            </view>
+        </block><text class="label">邮箱</text>
+        <input class="info" value="{{email}}" placeholder="请输入您的邮箱" bindinput="handleEmailInput" /><text class="label">手机号</text>
+        <input class="info" value="{{mobile}}" placeholder="请输入您的手机号" bindinput="handleMobileInput" type="number" />
+        <button class="submit" style="{{anonymousState__temp}}" disabled="{{!question}}" bindtap="handleSubmit">提交</button>
+    </view>
+</block>

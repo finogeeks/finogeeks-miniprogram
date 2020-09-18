@@ -1,0 +1,50 @@
+<block wx:if="{{$taroCompReady}}">
+    <block wx:if="{{canShow && !hasAuthed && showPage === 'first' && !systeminfo.inFinChat}}">
+        <view>
+            <view class="login-title">交流中交易</view>
+            <view class="login-second-title">专属金融领域的通讯与协同平台</view>
+            <view>
+                <image class="login-img" src="{{loginLogo}}"></image>
+            </view>
+            <button class="access-btn" open-type="getUserInfo" bindgetuserinfo="handleAccess">微信登录</button>
+            <view class="account-login-btn" bindtap="goPwdLogin">已有账号登录</view>
+        </view>
+    </block>
+    <block wx:elif="{{canShow && !hasAuthed && showPage === 'second' && !systeminfo.inFinChat}}">
+        <view>
+            <image src="{{favicon}}" class="secondpage-logo"></image>
+            <view class="favi-title">Finchat</view>
+            <view class="login-second-title">申请获取你的微信绑定手机号</view>
+            <button class="access-btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
+            <view class="account-login-btn" bindtap="goPwdLogin">已有账号登录</view>
+        </view>
+    </block>
+    <block wx:elif="{{canShow && !hasAuthed && showPage === 'third'}}">
+        <view class="index">
+            <image src="{{logoImage}}" class="logo"></image><text class="sub-title">{{intro}}</text><text class="name-title">账号</text>
+            <input value="{{userName}}" class="user-name" type="text" placeholder="请输入用户名/手机号" maxlength="20" bindinput="userNameChange" />
+            <view class="part-line"></view><text class="pass-title">密码</text>
+            <input password="{{showPass}}" value="{{userPassWord}}" class="user-name" type="text" placeholder="请输入密码" maxlength="20" bindinput="passWordChange" />
+            <view class="part-line">
+                <view class="show-pass-container" bindtap="handleShowPass">
+                    <block>
+                        <block wx:if="{{showPass}}">
+                            <image src="{{showPassImg}}" class="show-pass-control"></image>
+                        </block>
+                        <block wx:else>
+                            <image src="{{hidePassImg}}" class="show-pass-control"></image>
+                        </block>
+                    </block>
+                </view>
+            </view>
+            <block>
+                <block wx:if="{{systeminfo.inFinChat}}">
+                    <view class="{{['login-btn', 'login-view', userPassWord.length > 0 && userName.length > 0 ? 'can-submit' : '']}}" loading="{{isLoading}}" bindtap="onSetUserInfo">登陆</view>
+                </block>
+                <block wx:else>
+                    <button loading="{{isLoading}}" open-type="getUserInfo" bindgetuserinfo="handleLogin" class="{{['login-btn', userPassWord.length > 0 && userName.length > 0 ? 'can-submit' : '']}}">登录</button>
+                </block>
+            </block>
+        </view>
+    </block>
+</block>

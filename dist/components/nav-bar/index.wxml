@@ -1,0 +1,12 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="nav-bar" style="{{anonymousState__temp}}">
+        <view class="btns e-hairline">
+            <block wx:if="{{showBackBtn}}">
+                <view class="e-btns" bindtap="handleClickBack">
+                    <image src="{{backImage}}" class="s-btns_back"></image>
+                </view>
+            </block>
+        </view>
+        <view class="title" style="{{anonymousState__temp2}}">{{title}}</view>
+    </view>
+</block>

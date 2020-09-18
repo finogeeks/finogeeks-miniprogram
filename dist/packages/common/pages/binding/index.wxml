@@ -1,0 +1,37 @@
+<block wx:if="{{$taroCompReady}}">
+    <block wx:if="{{step === -1}}">
+        <view class="index"></view>
+    </block>
+    <view class="index" wx:else>
+        <block wx:if="{{step === 0}}">
+            <view class="container">
+                <view class="item"><text class="left_label">手机号</text>
+                    <input class="input" type="number" placeholder="请输入手机号" placeholder-class="input-placeholder" maxlength="11" bindinput="handlePhoneInput" />
+                </view>
+                <view class="item"><text class="left_label">验证码</text>
+                    <input class="input" type="number" placeholder="请输入验证码" placeholder-class="input-placeholder" maxlength="8" bindinput="handleCodeInput" />
+                    <view class="right_label">
+                        <button class="action" style="{{anonymousState__temp}}" bindtap="handleSendSmsCode">{{sendCodeRemain ? '重新获取' + sendCodeRemain + 's' : '获取验证码'}}</button>
+                    </view>
+                </view>
+                <view class="confirm">
+                    <button class="action" style="{{anonymousState__temp2}}" bindtap="handleSubmit">确定</button>
+                </view>
+            </view>
+        </block>
+        <block wx:if="{{step === 1}}">
+            <view class="container">
+                <view class="success_icon"></view>
+                <view class="tips">绑定成功</view>
+                <view class="confirm">
+                    <button class="action" style="{{anonymousState__temp3}}" bindtap="handleBack">返回</button>
+                </view>
+            </view>
+        </block>
+        <block wx:if="{{step === 2}}">
+            <view class="container">
+                <list-item compid="{{$compid__23}}"></list-item>
+            </view>
+        </block>
+    </view>
+</block>

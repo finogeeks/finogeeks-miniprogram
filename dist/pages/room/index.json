@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "scroll-loading": "../../components/scroll-loading/index",
+    "message": "../../components/message/index",
+    "suggest-box": "./components/suggest-box/index",
+    "avatar": "../../components/avatar/index",
+    "emoji-list": "./components/emoji-list/index",
+    "tool-box": "./components/tool-box/index"
+  },
+  "disableScroll": true,
+  "navigationBarTitleText": ""
+}

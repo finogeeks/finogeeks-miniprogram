@@ -1,0 +1,3 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="convo-item" hover-class="convo-item-hover">{{title}}</view>
+</block>

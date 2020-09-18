@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "clinear": "./layouts/linear/index",
+    "c-table": "./layouts/table/index",
+    "c-grid": "./layouts/grid/index",
+    "composite": "./layouts/composite/index"
+  }
+}
