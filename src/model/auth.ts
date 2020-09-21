@@ -84,11 +84,12 @@ class Auth {
     const systeminfo = Taro.getSystemInfoSync();
     console.log('~~~~~~~~systeminfo~~~~~~~~', systeminfo);
     let loginRes = { code: '' };
-    if (!systeminfo.inFinChat) {
-      loginRes = await Taro.login();
-      const wxUserDetail = await Taro.getUserInfo({ withCredentials: true, lang: 'zh_CN' });
-      this.wxUserInfo = wxUserDetail.userInfo;
-    }
+    // 此处授权不可用
+    // if (!systeminfo.inFinChat) {
+    //   loginRes = await Taro.login();
+    //   const wxUserDetail = await Taro.getUserInfo({ withCredentials: true, lang: 'zh_CN' });
+    //   this.wxUserInfo = wxUserDetail.userInfo;
+    // }
     // const { iv, encryptedData } = wxUserDetail;
     const diviceId = `mini-${Date.now()}`;
     const authRes = await service.user.login(
@@ -120,7 +121,7 @@ class Auth {
     // await this.syncUserInfo();
     
     setCacheSync('userSession', this.userSession);
-    setCacheSync('wxUserInfo', this.wxUserInfo);
+    // setCacheSync('wxUserInfo', this.wxUserInfo);
     
     // store.dispatch(setUserSession(this.__userSession));
     this.isAuth = true;

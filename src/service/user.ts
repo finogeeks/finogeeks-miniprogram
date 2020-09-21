@@ -1,16 +1,17 @@
 import { request, } from '../utils/http-client';
+import Taro from '@tarojs/taro';
 import { getExtInfo } from '../utils/ext';
 import { getCacheSync, setCacheSync, removeCacheSync } from '../utils/store';
 import authModel from '@/model/auth';
 
 export const login = async (code, diviceId, userName, userPassWord, systeminfo) => {
-  const extInfo = getExtInfo();
-  const wxUserInfo = authModel.wxUserInfo;
+  const accountInfo = Taro.getAccountInfoSync();
   const display_name = {
     loginTime: new Date().getTime(),
-    system: systeminfo.system+' - 小程序',
+    system: systeminfo.system + ' - 小程序',
     clientType: '',
-    deviceName: systeminfo.inFinChat ? 'fcuser' : wxUserInfo.nickName,
+    deviceName: '微信小程序',
+    version: accountInfo.miniProgram.version || 'dev',
   }
   const response = await request({
     url: '/api/v1/registry/login',
@@ -20,7 +21,6 @@ export const login = async (code, diviceId, userName, userPassWord, systeminfo) 
       password: userPassWord,
       app_type: 'STAFF',
       login_type: 'pwd',
-      // "display_name": "{\"loginTime\":1572918966267,\"system\":\"web\",\"clientType\":\"\",\"deviceName\":\"chrome: 78.0.3904.70\"}"
       display_name: JSON.stringify(display_name),
       device_type: 'mini',
       device_id: diviceId,

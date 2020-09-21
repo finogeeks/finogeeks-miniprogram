@@ -189,7 +189,8 @@ class Login extends Component {
         // console.log(userInfo);
         setCacheSync('userInfo', userInfo);
         store.dispatch(setUserInfo(userInfo));
-        !Taro.getSystemInfoSync().inFinChat && await authModel.getUserPosition()
+        // 去除位置信息获取
+        // !Taro.getSystemInfoSync().inFinChat && await authModel.getUserPosition()
         // await Promise.all[
         //   (authModel.syncUserInfo(), authModel.getUserPosition())
         // ];
@@ -204,6 +205,7 @@ class Login extends Component {
   onSetUserInfo = async () => {
     Taro.showLoading({ title: '加载中' });
     try {
+      console.log(this.state, 'this.state')
       await authModel.login(this.state.userName, this.state.userPassWord);
       await this.start();
       Taro.hideLoading();
@@ -442,17 +444,18 @@ class Login extends Component {
     }
   };
 
-  handleLogin = async res => {
-    if (!res.detail.userInfo) {
-      console.log('登录失败信息：', res);
-      Taro.showModal({
-        title: '',
-        content: '拒绝授权, 您将无法正常使用我们的功能',
-        showCancel: false,
-      });
-      return;
-    }
-    await this.onSetUserInfo();
+  handleLogin = () => {
+    // 去除微信授权行为
+    // if (!res.detail.userInfo) {
+    //   console.log('登录失败信息：', res);
+    //   Taro.showModal({
+    //     title: '',
+    //     content: '拒绝授权, 您将无法正常使用我们的功能',
+    //     showCancel: false,
+    //   });
+    //   return;
+    // }
+    this.onSetUserInfo();
   };
 
   handleShowPass = () => {
@@ -561,96 +564,123 @@ class Login extends Component {
   render() {
     const { showPass, showPage } = this.state;
     const systeminfo = Taro.getSystemInfoSync();
-    console.log('LOGIN RENDER');
-    console.log(this.props);
-    if (this.state.canShow && !this.state.hasAuthed && showPage === 'first' && !systeminfo.inFinChat) {
-      return (<View>
-        <View className="login-title">
-          交流中交易
-        </View>
-        <View className="login-second-title">
-          专属金融领域的通讯与协同平台
-        </View>
-        <View>
-          <Image className="login-img" src={loginLogo} />
-        </View>
-        <Button
-          className="access-btn"
-          openType='getUserInfo'
-          onGetUserInfo={this.handleAccess}
-          >
-          微信登录
-        </Button>
-        <View
-          className="account-login-btn"
-          onClick={this.goPwdLogin}
-          >
-          已有账号登录
-        </View>
-      </View>)
-    } else if (this.state.canShow && !this.state.hasAuthed && showPage === 'second' && !systeminfo.inFinChat) {
-      return(
-        <View>
-          <Image src={favicon} className='secondpage-logo' />
-          <View className="favi-title">Finchat</View>
-          <View className="login-second-title">申请获取你的微信绑定手机号</View>
-          <Button
-            className="access-btn"
-            openType='getPhoneNumber'
-            onGetPhoneNumber={this.getPhoneNumber}
-            >
-            获取手机号
-          </Button>
-          <View
-            className="account-login-btn"
-            onClick={this.goPwdLogin}
-            >
-            已有账号登录
-          </View>
-        </View>
-      )
-    } else if (this.state.canShow && !this.state.hasAuthed && showPage === 'third') {
-      return (
-        // <Provider store={store}>
-          <View className='index'>
-            <Image src={logoImage} className='logo' />
-            <Text className='sub-title'>{this.state.intro}</Text>
-            <Text className='name-title'>账号</Text>
-            <Input value={this.state.userName} className="user-name" type='text' placeholder='请输入用户名/手机号' maxLength='20' onInput={this.userNameChange}/>
-            <View className="part-line"></View>
-            <Text className='pass-title'>密码</Text>
-            <Input password={showPass} value={this.state.userPassWord} className="user-name" type='text' placeholder='请输入密码' maxLength='20' onInput={this.passWordChange}/>
-            <View className="part-line">
-              <View className="show-pass-container" onClick={this.handleShowPass}>
-                {showPass ? (
-                  <Image src={showPassImg} className='show-pass-control'/>
-                ) : (
-                  <Image src={hidePassImg} className='show-pass-control'/>
-                )}
-              </View>
-            </View>
-            {systeminfo.inFinChat ? (
-              <View
-                className={['login-btn', 'login-view', this.state.userPassWord.length > 0 && this.state.userName.length > 0 ? 'can-submit' :'' ]}
-                loading={this.state.isLoading}
-                onClick={this.onSetUserInfo}
-                >
-                登陆
-              </View>
+    return (
+      <View className='index'>
+        <Image src={logoImage} className='logo' />
+        <Text className='sub-title'>{this.state.intro}</Text>
+        <Text className='name-title'>账号</Text>
+        <Input value={this.state.userName} className="user-name" type='text' placeholder='请输入用户名/手机号' maxLength='20' onInput={this.userNameChange}/>
+        <View className="part-line"></View>
+        <Text className='pass-title'>密码</Text>
+        <Input password={showPass} value={this.state.userPassWord} className="user-name" type='text' placeholder='请输入密码' maxLength='20' onInput={this.passWordChange}/>
+        <View className="part-line">
+          <View className="show-pass-container" onClick={this.handleShowPass}>
+            {showPass ? (
+              <Image src={showPassImg} className='show-pass-control'/>
             ) : (
-              <Button
-                loading={this.state.isLoading}
-                openType='getUserInfo'
-                onGetUserInfo={this.handleLogin}
-                className={['login-btn', this.state.userPassWord.length > 0 && this.state.userName.length > 0 ? 'can-submit' :'' ]}
-              >
-                登录
-              </Button>
+              <Image src={hidePassImg} className='show-pass-control'/>
             )}
           </View>
-        // </Provider>
-      );
-    }
+        </View>
+        <Button
+            loading={this.state.isLoading}
+            onClick={this.handleLogin}
+            // openType='getUserInfo'
+            // onGetUserInfo={this.handleLogin}
+            className={['login-btn', this.state.userPassWord.length > 0 && this.state.userName.length > 0 ? 'can-submit' :'' ]}
+          >
+          登录
+        </Button>
+      </View>
+    )
+    // if (this.state.canShow && !this.state.hasAuthed && showPage === 'first' && !systeminfo.inFinChat) {
+    //   return (<View>
+    //     <View className="login-title">
+    //       交流中交易
+    //     </View>
+    //     <View className="login-second-title">
+    //       专属金融领域的通讯与协同平台
+    //     </View>
+    //     <View>
+    //       <Image className="login-img" src={loginLogo} />
+    //     </View>
+    //     <Button
+    //       className="access-btn"
+    //       openType='getUserInfo'
+    //       onGetUserInfo={this.handleAccess}
+    //       >
+    //       微信登录
+    //     </Button>
+    //     <View
+    //       className="account-login-btn"
+    //       onClick={this.goPwdLogin}
+    //       >
+    //       已有账号登录
+    //     </View>
+    //   </View>)
+    // } else if (this.state.canShow && !this.state.hasAuthed && showPage === 'second' && !systeminfo.inFinChat) {
+    //   return(
+    //     <View>
+    //       <Image src={favicon} className='secondpage-logo' />
+    //       <View className="favi-title">Finchat</View>
+    //       <View className="login-second-title">申请获取你的微信绑定手机号</View>
+    //       <Button
+    //         className="access-btn"
+    //         openType='getPhoneNumber'
+    //         onGetPhoneNumber={this.getPhoneNumber}
+    //         >
+    //         获取手机号
+    //       </Button>
+    //       <View
+    //         className="account-login-btn"
+    //         onClick={this.goPwdLogin}
+    //         >
+    //         已有账号登录
+    //       </View>
+    //     </View>
+    //   )
+    // } else if (this.state.canShow && !this.state.hasAuthed && showPage === 'third') {
+    //   return (
+    //     // <Provider store={store}>
+    //       <View className='index'>
+    //         <Image src={logoImage} className='logo' />
+    //         <Text className='sub-title'>{this.state.intro}</Text>
+    //         <Text className='name-title'>账号</Text>
+    //         <Input value={this.state.userName} className="user-name" type='text' placeholder='请输入用户名/手机号' maxLength='20' onInput={this.userNameChange}/>
+    //         <View className="part-line"></View>
+    //         <Text className='pass-title'>密码</Text>
+    //         <Input password={showPass} value={this.state.userPassWord} className="user-name" type='text' placeholder='请输入密码' maxLength='20' onInput={this.passWordChange}/>
+    //         <View className="part-line">
+    //           <View className="show-pass-container" onClick={this.handleShowPass}>
+    //             {showPass ? (
+    //               <Image src={showPassImg} className='show-pass-control'/>
+    //             ) : (
+    //               <Image src={hidePassImg} className='show-pass-control'/>
+    //             )}
+    //           </View>
+    //         </View>
+    //         {systeminfo.inFinChat ? (
+    //           <View
+    //             className={['login-btn', 'login-view', this.state.userPassWord.length > 0 && this.state.userName.length > 0 ? 'can-submit' :'' ]}
+    //             loading={this.state.isLoading}
+    //             onClick={this.onSetUserInfo}
+    //             >
+    //             登陆
+    //           </View>
+    //         ) : (
+    //           <Button
+    //             loading={this.state.isLoading}
+    //             onClick={this.handleLogin}
+    //             // openType='getUserInfo'
+    //             // onGetUserInfo={this.handleLogin}
+    //             className={['login-btn', this.state.userPassWord.length > 0 && this.state.userName.length > 0 ? 'can-submit' :'' ]}
+    //           >
+    //             登录
+    //           </Button>
+    //         )}
+    //       </View>
+    //   );
+    // }
   }
 }
 
