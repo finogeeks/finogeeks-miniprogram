@@ -4,7 +4,7 @@
 	"private": true,
 	"description": "金易联小程序端",
 	"scripts": {
-		"swan:dev:test": "export DEV_ENV=develop  ORG_ENV=swan BASE_URL=https://finchat-dev.finogeeks.club && npm run build:weapp -- --watch",
+		"swan:dev:test": "set DEV_ENV=develop  ORG_ENV=swan BASE_URL=https://finchat-dev.finogeeks.club && npm run build:weapp -- --watch",
 		"swan:dev:prod": "export DEV_ENV=develop  ORG_ENV=swan BASE_URL=https://api.finogeeks.club && npm run build:weapp -- --watch",
 		"swan:build:test": "export DEV_ENV=develop  ORG_ENV=swan BASE_URL=https://finchat-dev.finogeeks.club && npm run build:weapp",
 		"swan:dev:test:saas": "export DEV_ENV=develop  ORG_ENV=swan BASE_URL=https://swan.finogeeks.club && npm run build:weapp -- --watch",
