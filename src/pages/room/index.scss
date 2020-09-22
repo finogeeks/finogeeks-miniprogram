@@ -331,17 +331,28 @@
 
 .show-members-at{
   position: absolute;
-bottom: 50PX;
-background: #ffffff;
-left: 0;
-right: 0;
-line-height: 40PX;
-max-height: 200PX;
-overflow-y: scroll;
-font-size: 32rpx;
-  .members-item{
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0 7px 0 7px;
+  bottom: 50PX;
+  background: rgba(0,0,0,0);
+  left: 0;
+  right: 0;
+  line-height: 40PX;
+  height: calc(100% - 50PX);
+  overflow-y: scroll;
+  font-size: 32rpx;
+  display: flex;
+  flex-direction: column;
+  .mask{
+    flex: 1;
+  }
+  .show-members-container{
+    max-height: 360px;
+    overflow-y: scroll;
+    background: #fff;
+    padding: 0 20px;
+    .members-item{
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 7px 0 7px;
+    }
   }
 }

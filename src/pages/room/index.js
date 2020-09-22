@@ -911,44 +911,37 @@ export default class Room extends Component {
     });
   };
 
+  closeAtModal = () => {
+    this.setState({
+      showMemberAt: false,
+    });
+  }
+
   handleInput = event => {
-    const { value } = event.detail;
-    console.log('handleInput: ', value);
+    const { value, keyCode } = event.detail;
+    // TODO: 若是单独遮照可采用 keyCode 64 行为
     if (value.substring(value.length -1) === '@') {
       this.setState({
         showMemberAt: true,
         atingMember: true,
-        // memberAtFilte: value.replace('@', '')
       });
-    } else {
-      // this.setState({
-      //   showMemberAt: false,
-      //   // atingMember: false,
-      // });
     }
     if (this.state.atingMember) {
       this.setState({
         memberAtFilte: value.replace('@', '')
       });
-      console.log('memberAtFilte');
-      console.log(this.state.memberAtFilte, value.replace('@', ''));
     } else {
       this.setState({
         memberAtFilte: ''
       });
     }
-    const { dispatchInfo } = this.state;
-    const { roomType } = this.state.room;
-    console.log('~~~~~~~~handleInput~~~~this.state.inputFocus~~~~~~', this.state.inputFocus)
     // Mark: 安卓发送消息之后会触发一次旧的消息，即使设置了 input 为空
     if (!this.state.inputFocus) {
       return;
     }
-    this.setState(
-      {
-        input: value,
-      }
-    );
+    this.setState({
+      input: value,
+    });
   };
 
   handleToggleUtil = () => {
@@ -1362,14 +1355,14 @@ export default class Room extends Component {
         })
       })
     }, 200);
-    event.preventDefault();
+    // event.preventDefault();
   }
 
   handleInputBlur = () => {
     this.setState({
       inputFocus: false,
       keyboardHeight: 0,
-      showMemberAt: false,
+      // showMemberAt: false,
       atingMember: false,
       memberAtFilte: '',
     });
@@ -1902,19 +1895,26 @@ export default class Room extends Component {
           <View className='footer' style={{ height: `${footerHeight}rpx` }}>
             {
               showMemberAt && (
-                <View className="show-members-at">
-                  {
-                    filtermembers.map(m => {
-                      return (
-                        <View onClick={this.memberAtChose.bind(this,m)}>
-                          <View className="members-item">
-                            <Avatar url={m.avatar} size={60}></Avatar>
+                <View 
+                  style={{ height: `${windowHeight - footerHeight}rpx` }}
+                  className="show-members-at">
+                  <View className="mask" onClick={this.closeAtModal.bind(this)}></View>
+                  <View className="show-members-container">
+                    {
+                      filtermembers.map((m, index) => {
+                        return (
+                          <View 
+                            key={ m.id }
+                            onClick={this.memberAtChose.bind(this,m)}>
+                            <View className="members-item">
+                              <Avatar url={m.avatar} size={60}></Avatar>
+                            </View>
+                            {m.name}
                           </View>
-                          {m.name}
-                        </View>
-                      )
-                    })
-                  }
+                        )
+                      })
+                    }
+                  </View>
                 </View>
               )
             }
