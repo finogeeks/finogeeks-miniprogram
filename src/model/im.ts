@@ -462,9 +462,7 @@ class IM {
     // console.log('======updateUnreadBadge=====');
     const rooms = this.getBasicRooms();
     const unread = rooms.reduce((pre, cur) => {
-      // if (cur.unread) {
-      //   console.log(cur);
-      // }
+      if (cur.isMute) return pre;
       return pre + (cur.isArchive ? 0 : cur.unread);
     }, 0);
     console.log(unread);

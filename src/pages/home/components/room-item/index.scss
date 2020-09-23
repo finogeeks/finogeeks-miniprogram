@@ -15,6 +15,35 @@
     left: 0;
     opacity: 0;
   }
+  .room-avatar{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    .mute-bridge{
+      width: 25px;
+      height: 25px;
+      background-color:#EA4335;
+      border-radius: 50%;
+      position: absolute;
+      right: -10px;
+      top: -6px;
+    }
+    .no-mute-bridge{
+      font-size: 22px;
+      color: #ffffff;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      position: absolute;
+      right: -10px;
+      top: -6px;
+      text-align: center;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color:#EA4335;
+      z-index: 1;
+    }
+  }
   .avatar {
     flex-grow: 0;
     flex-shrink: 0;

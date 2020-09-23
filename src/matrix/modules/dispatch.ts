@@ -1,10 +1,7 @@
-import { ROOMTYPES } from '@/constants/room';
-import Taro from '@tarojs/taro';
 import isEqual from '@/utils/lodash-local/is-equal';
 import { setCacheSync, getCacheSync } from '@/utils/store';
 import { ModuleOpts } from '../interface/module';
 import BaseModule from './base';
-import { Room } from '../interface/room';
 import { DispatchState, DispatchData } from '../interface/dispatch';
 
 const DISPATCH_STATE_UPDATE = 'DISPATCH_STATE_UPDATE'

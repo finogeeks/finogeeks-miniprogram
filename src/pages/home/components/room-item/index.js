@@ -6,7 +6,6 @@ import service from '@/service';
 import authModel from '@/model/auth';
 import imModel from '@/model/im';
 import RoomAvatar from '@/components/room-avatar';
-import RoomBadge from '@/components/room-badge';
 import MuteIcon from '@/assets/room/icon_chatlist_mute.png';
 import './index.scss';
 import { getCacheSync, setCacheSync, removeCacheSync } from '@/utils/store';
@@ -128,16 +127,14 @@ class RoomItem extends Component {
           onLongPress={this.handleLongPress}
         >
           <Button className='hide-btn' form-type='submit' />
-          {unread > 0 ? (
-            <RoomBadge count={unread} maxValue={99}>
-              <RoomAvatar room={this.props.room} />
-              {/* <Image className='avatar' src={avatar} onError={this.handleAvatarError}></Image> */}
-            </RoomBadge>
-          ) : (
+          <View className="room-avatar">
             <RoomAvatar room={this.props.room} />
-          )
-          // <Image className='avatar' src={avatar} onError={this.handleAvatarError}></Image>
-          }
+            { 
+              isMute ? 
+              (<View className="mute-bridge"></View>) :
+              unread && (<View className="no-mute-bridge">{ unread > 99 ? '99+' : unread }</View>)
+            }
+          </View>
           <View className='info'>
             <View className='title'>
               <View className='room-name'>{name}</View>

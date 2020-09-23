@@ -46,7 +46,7 @@ class RoomAvatar extends Component {
          {groupAvatars.map(avatarUrl => (
            <Avatar url={avatarUrl} size={44} key={avatarUrl} />
          ))}
-         <View className="room_badge">#</View>
+         {/* <View className="room_badge">#</View> */}
         </View>
       )
     } else if (isDirect) {
