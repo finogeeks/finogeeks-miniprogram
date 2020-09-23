@@ -101,7 +101,7 @@ const config = {
     }
   }
 }
-const org = process.env.ORG_ENV;
+const org = process.env.ORG_ENV || 'swan';
 module.exports = function (merge) {
   return merge({}, config, require(`./${org}`))
   // if (process.env.NODE_ENV === 'development') {

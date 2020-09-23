@@ -229,6 +229,7 @@ class IM {
   }
 
   sendMessage = async (roomId:string, content:MessageContent) => {
+    console.log(content, 'contentcontentcontentcontentcontentcontent')
     return this.matrix.timeline.sendMessage(roomId, content);
   }
 
@@ -241,6 +242,11 @@ class IM {
     //   url: NAV_PAGES.LOGIN
     // });
     // Taro.showToast({ title: '当前token已失效,请重新登录', icon: 'none' });
+    return response
+  }
+
+  sendAlertMessage = async (roomId:string, content: MessageContent) => {
+    const response = await this.matrix.mxClient.sendMessage(roomId, content)
     return response
   }
 

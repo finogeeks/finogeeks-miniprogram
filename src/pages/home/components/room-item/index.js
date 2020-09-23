@@ -7,6 +7,7 @@ import authModel from '@/model/auth';
 import imModel from '@/model/im';
 import RoomAvatar from '@/components/room-avatar';
 import RoomBadge from '@/components/room-badge';
+import MuteIcon from '@/assets/room/icon_chatlist_mute.png';
 import './index.scss';
 import { getCacheSync, setCacheSync, removeCacheSync } from '@/utils/store';
 
@@ -98,8 +99,7 @@ class RoomItem extends Component {
   };
 
   render() {
-    const { name, lastMessage, isCrossDomain, federate, publicChannel, isChannel, isSecret, isGroup, id, isDirect, members } = this.props.room;
-    // console.log(this.props.room);
+    const { name, lastMessage, isCrossDomain, federate, publicChannel, isChannel, isSecret, isGroup, id, isDirect, members, isMute } = this.props.room;
     // const text = this.getLastMessage()
     const updatedAt = formatTimestamp(
       this.props.room.updatedAt || this.props.room.createdAt, id
@@ -161,6 +161,9 @@ class RoomItem extends Component {
           </View>
           <View className='time'>
             <Text>{updatedAt}</Text>
+            {
+              isMute && (<Image className="mute-icon" src={ MuteIcon }/>)
+            }
           </View>
         </View>
       </Form>

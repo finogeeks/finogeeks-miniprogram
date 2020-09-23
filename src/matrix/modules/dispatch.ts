@@ -59,6 +59,13 @@ export default class DispatchModule extends BaseModule {
 
   private handleAccountData = (mxEvent) => {
     const { type, content } = mxEvent.event;
+    if (type === 'm.push_rules') {
+      const mxRooms = this.mxClient.getRooms();
+      mxRooms.forEach((val)=> {
+        const newRoom = this.buildRoom(val);
+        this.store.room.put(val.roomId, newRoom);
+      });
+    }
     if (type === 'm.modular.swan.dispatch') {
       let { dispatchState, from, dispatchRoomId, acceptRoomId, questionType } =
         typeof content === 'string' ? JSON.parse(content) : content;

@@ -350,9 +350,20 @@
     background: #fff;
     padding: 0 20px;
     .members-item{
-      display: inline-block;
-      vertical-align: middle;
-      margin: 0 7px 0 7px;
+      height: 80px;
+      align-items: center;
+      display: flex;
+      .members-item-l{
+        width: 64px;
+        height: 64px;
+        margin-right: 20px;
+      }
+      .item-name-r{
+        font-size: 34px;
+        color: #333;
+        flex: 1;
+        border-bottom: 1px solid #eee;
+      }
     }
   }
 }

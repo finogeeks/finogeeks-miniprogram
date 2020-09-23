@@ -95,6 +95,13 @@
     font-size: 24px;
     align-self: flex-start;
     margin-top: 24px;
+    .mute-icon{
+      margin-top: 10px;
+      display: block;
+      width: 30px;
+      height: 30px;
+      margin-left: auto;
+    }
   }
 }
 .room_item:active {

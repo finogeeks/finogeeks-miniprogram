@@ -380,7 +380,7 @@ export default class Home extends Component {
     console.log('HOME PAGE BEGIN RENDER');
     const { scrollHeight, hasMobile, basicRooms, isAuth } = this.state;
     const showList = getGlobalData('showRoomList');
-    console.log('============showList=========', showList);
+    console.log('============basicRooms=========', basicRooms);
     const fakeBasicRoom = [
       {
         id: 'smartRoom',

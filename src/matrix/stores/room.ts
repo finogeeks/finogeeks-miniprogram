@@ -30,6 +30,7 @@ export default class RoomStore extends BaseStore<Room> {
       createdAt: room.createdAt,
       updatedAt: room.updatedAt,
       lastMessage: room.lastMessage,
+      isMute: room.isMute,
       members: room.members,
       isChannel: room.isChannel,  // 是否频道
       isArchive: room.isArchive,  //  是否已归档

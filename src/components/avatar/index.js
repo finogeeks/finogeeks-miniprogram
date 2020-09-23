@@ -38,7 +38,7 @@ class Avatar extends Component {
 
   render() {
     const { avatarError } = this.state;
-    const { url, size, circle, defaultAvatar, outterCircle, radius } = this.props;
+    const { url, size, circle, defaultAvatar, outterCircle, radius, className } = this.props;
     const circleStyle = circle
       ? {
           borderRadius: circle ? '50%' : '0',
@@ -51,7 +51,7 @@ class Avatar extends Component {
     // console.log(`~~~~~~~~Avatar url:${url} avatarError:${avatarError}~~~~~~~~~`);
     return (
       <View
-        className='avatar'
+        className={ `avatar ${className}` }
         style={{ width: `${size}rpx`, height: `${size}rpx`, borderRadius: outterCircle ? '50%' : 0 }}
       >
         {/* {avatarError || !url ? (

@@ -30,6 +30,7 @@ import EmojiList from './components/emoji-list';
 import ToolBox from './components/tool-box';
 import AdvisorHeader from './components/advisor-header';
 import SuggestBox from './components/suggest-box';
+import AtAllImg from '@/assets/room/mop_chat_at.png';
 import './index.scss';
 import Avatar from '@/components/avatar';
 import store from '../../store';
@@ -47,13 +48,13 @@ const UTIL_HEIGHT = 110;
 // const IPHONEX = "iPhone X";
 
 const mapStateToProps = ({ navigation, user, detect }) => {
-  console.log('room mapStateToProps');
-  console.log(navigation)
+  // console.log('room mapStateToProps');
+  // console.log(navigation)
   const { style } = navigation;
   const { city, district } = user.location || {};
   const { needDetect } = detect;
   const userCity = city + district || null;
-  console.log(style.headerHeight)
+  // console.log(style.headerHeight)
   return {
     navBarHeight: style.headerHeight,
     userCity,
@@ -172,20 +173,21 @@ export default class Room extends Component {
       showMemberAt: false,
       memberAtFilte: '',
       atingMember: false,
-      cursorPosition: 0
+      cursorPosition: 0,
+      // @逻辑复写
+      idlist: [],
+      signals: [],
     };
   }
 
   componentWillMount() {
     Taro.showLoading();
-    console.log('componentWillMount');
     this.setState({
       isLoading: true,
     });
   }
 
   async componentDidMount() {
-    console.log('componentDidMount');
     this.initLayouts();
     await this.initIM();
     this.initBasicInfo();
@@ -228,8 +230,8 @@ export default class Room extends Component {
       imModel.on('TIMELINE', this.handleTimeline);
       imModel.on('DISPATCH', this.handleDistpatch);
       const { timeline, canPaginateBack, canPaginateFront } = await imModel.addViewingRoom(roomId);
-      console.log('canPaginateBack', canPaginateBack);
-      console.log(timeline);
+      // console.log('canPaginateBack', canPaginateBack);
+      // console.log(timeline);
       const dispatchData = imModel.getDispatchData();
       const { dispatchState, from, questionType } = dispatchData;
       const dispatchInfo = {
@@ -237,7 +239,7 @@ export default class Room extends Component {
         questionType,
         dispatchFrom: from,
       }
-      console.log('~~~~~~~~~~~~~~~~room page initIM~~~~~~~~~~~~~~~~~~', new Date().getTime());
+      // console.log('~~~~~~~~~~~~~~~~room page initIM~~~~~~~~~~~~~~~~~~', new Date().getTime());
       this.setState({ 
         room, 
         dispatchInfo,
@@ -246,12 +248,12 @@ export default class Room extends Component {
         hasMoreFront: canPaginateFront,
         loadingTimeline: false,
       }, () => {
-        console.log('~~~~~~~~~~~~~~~~room page initIM setState~~~~~~~~~~~~~~~~~~', new Date().getTime());
+        // console.log('~~~~~~~~~~~~~~~~room page initIM setState~~~~~~~~~~~~~~~~~~', new Date().getTime());
         this.setState({
           isLoading: false,
         });
         setTimeout(() => {
-          console.log('~~~~~~~~~~~~~~~~room page initIM settimeout~~~~~~~~~~~~~~~~~~', new Date().getTime());
+          // console.log('~~~~~~~~~~~~~~~~room page initIM settimeout~~~~~~~~~~~~~~~~~~', new Date().getTime());
           this.scrollToBottom(true);
           Taro.hideLoading();
         });
@@ -292,8 +294,8 @@ export default class Room extends Component {
   };
 
   handleTimeline = ({ type, timeline, newMessage, paginateTimelie }) => {
-    console.log('=======handleTimeline======');
-    console.log(timeline);
+    // console.log('=======handleTimeline======');
+    // console.log(timeline);
     switch(type) {
       case 'NEW_MESSAGE':
       case 'MESSAGE_UPDATE':
@@ -393,7 +395,6 @@ export default class Room extends Component {
       this.handleReopenOrder({}, staffId, roomId);
     }
     if (sendMsg) {
-      console.log('lllllll', sendMsg);
       removeCacheSync('sendMsg');
       switch (sendMsg.msgtype) {
         case 'fc.applet':
@@ -496,7 +497,7 @@ export default class Room extends Component {
       orderInfo: {},
     };
     if (roomType === ROOMTYPES.advisor && !this.state.advisorInfo.name) {
-      console.log('!!!!!!!!!!!!room type change staffId: ', orderInfo.staffId);
+      // console.log('!!!!!!!!!!!!room type change staffId: ', orderInfo.staffId);
       this.initAdvisorRoom(orderInfo.staffId);
     }
   };
@@ -568,7 +569,7 @@ export default class Room extends Component {
     if (roomType === ROOMTYPES.advisor) {
       scrollViewHeight -= headerHeight;
     }
-    console.log('======getScrollHeight======', scrollViewHeight);
+    // console.log('======getScrollHeight======', scrollViewHeight);
     // console.log(computedBottomHeight, suggestion, radio);
     // console.log(windowHeight, navBarHeight, radio, footerHeight, computedBottomHeight, suggestion, keyboardHeight);
     // console.log(this.props);
@@ -592,7 +593,7 @@ export default class Room extends Component {
     const lastMessage = curTimeline[curTimeline.length - 1];
 
     const newViewMsgId = 'id' + `${lastMessage.id}`.replace(/[^\d]/g, '');
-    console.log(`~~~~~~~~~~~~newViewMsgId:${newViewMsgId}~~~~~~~~~~~~`);
+    // console.log(`~~~~~~~~~~~~newViewMsgId:${newViewMsgId}~~~~~~~~~~~~`);
     if (newViewMsgId === this.state.viewMsgId) {
       this.setState({ viewMsgId: '' }, () =>
         this.setState({ viewMsgId: newViewMsgId }),
@@ -622,13 +623,24 @@ export default class Room extends Component {
         this.setState({ isSendingMsg: false });
         return;
       }
+      let textContent = null;
+      if (this.state.idlist.length) {
+        textContent = {
+          msgtype: 'm.alert',
+          body: validateText || validateInput,
+          signals: this.state.signals,
+          idlist: this.state.idlist,
+        };
+      } else {
+        textContent = {
+          msgtype: 'm.text',
+          body: validateText || validateInput,
+        };
+      }
 
-      const textContent = {
-        msgtype: 'm.text',
-        body: validateText || validateInput,
-      };
       // console.log('textContent', textContent);
       const queueRes = (await this.checkNeedQueue(textContent)) || {};
+      console.log(queueRes, 'this.state.idlist')
 
       const isDispatching = dispatchState === 'DISPATCHING';
       // Mark: 由于部分性能较差的手机，清空了 input 之后依然会触发相同的 text input 事件，所以延迟 500 ms 清空
@@ -650,7 +662,7 @@ export default class Room extends Component {
         };
       }
       const {isSensitive} = await service.detect.detectSensitiveWord(validateText || validateInput);
-      console.log('detectData: ', isSensitive);
+      // console.log('detectData: ', isSensitive);
       if (isSensitive && this.props.needDetect) {
         Taro.showToast({
           title: '发送的内容含不合规信息',
@@ -658,13 +670,23 @@ export default class Room extends Component {
           mask: true,
         });
       } else {
-        await imModel.sendTextMessage(this.roomId, {
-          text: validateText || validateInput,
-          extend,
-        });
+        if (this.state.idlist.length) {
+          await imModel.sendAlertMessage(this.roomId, textContent);
+          this.setState({
+            idlist: [],
+            signals: [],
+          })
+        } else {
+          await imModel.sendTextMessage(this.roomId, {
+            text: validateText || validateInput,
+            extend,
+          });
+        }
       }
 
-      this.setState({ isSendingMsg: false });
+      this.setState({ 
+        isSendingMsg: false,
+      });
 
       if (
         dispatchState === DISPATCH_STATE.timeout &&
@@ -673,11 +695,11 @@ export default class Room extends Component {
         imModel.closeDispatch();
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       this.setState({ isSendingMsg: false });
     }
 
-    console.timeEnd('sendTextlocal');
+    // console.timeEnd('sendTextlocal');
   }, 200, { leading: true});
 
   sendConvoMessage = async (convoContent) => {
@@ -711,7 +733,7 @@ export default class Room extends Component {
         imModel.closeDispatch();
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       this.setState({ isSendingMsg: false });
     }
   };
@@ -839,10 +861,10 @@ export default class Room extends Component {
   };
 
   handleMoreTimeLine = async (dir) => {
-    console.log('this.state.loadingTimeline', this.state.loadingTimeline);
-    console.log('this.state.hasMoreFront', this.state.hasMoreFront);
-    console.log('this.state.hasMoreBack', this.state.hasMoreBack);
-    console.log('LOADING_FLAG:  ',LOADING_FLAG);
+    // console.log('this.state.loadingTimeline', this.state.loadingTimeline);
+    // console.log('this.state.hasMoreFront', this.state.hasMoreFront);
+    // console.log('this.state.hasMoreBack', this.state.hasMoreBack);
+    // console.log('LOADING_FLAG:  ',LOADING_FLAG);
     if (LOADING_FLAG) return;
     // Taro.showLoading({ title: '加载中' });
     LOADING_FLAG = true;
@@ -869,9 +891,9 @@ export default class Room extends Component {
     // console.log('lastMessage', lastMessage);
     const { canPaginateFront, canPaginateBack, timeline } = res;
     const newViewMsgId = 'id' + `${lastMessage.id}`.replace(/[^\d]/g, '');
-    console.log('newViewMsgId:', newViewMsgId);
-    console.log('this.state.viewMsgId:', this.state.viewMsgId);
-    console.log('timeline:', timeline);
+    // console.log('newViewMsgId:', newViewMsgId);
+    // console.log('this.state.viewMsgId:', this.state.viewMsgId);
+    // console.log('timeline:', timeline);
     // this.state.timeline.unshift(...timeline);
     this.setState({ 
       canScrollY: false,
@@ -903,7 +925,7 @@ export default class Room extends Component {
   }
 
   handleInputArea = () => {
-    console.log('input area', FOOTER_HEIGHT * this.state.radio);
+    // console.log('input area', FOOTER_HEIGHT * this.state.radio);
     this.setState({
       showUtil: false,
       showEmoji: false,
@@ -923,18 +945,22 @@ export default class Room extends Component {
     if (value.substring(value.length -1) === '@') {
       this.setState({
         showMemberAt: true,
-        atingMember: true,
-      });
-    }
-    if (this.state.atingMember) {
-      this.setState({
-        memberAtFilte: value.replace('@', '')
+        // atingMember: true,
       });
     } else {
       this.setState({
-        memberAtFilte: ''
+        showMemberAt: false,
       });
     }
+    // if (this.state.atingMember) {
+    //   this.setState({
+    //     memberAtFilte: value.replace('@', '')
+    //   });
+    // } else {
+    //   this.setState({
+    //     memberAtFilte: ''
+    //   });
+    // }
     // Mark: 安卓发送消息之后会触发一次旧的消息，即使设置了 input 为空
     if (!this.state.inputFocus) {
       return;
@@ -988,7 +1014,7 @@ export default class Room extends Component {
   };
 
   handleEmojiSelect = emoji => {
-    console.log(`~~~~~~~~~~~~~~handleEmojiSelect~~~~~~~~~~~~~`, this.state.input, this.state.input.trim());
+    // console.log(`~~~~~~~~~~~~~~handleEmojiSelect~~~~~~~~~~~~~`, this.state.input, this.state.input.trim());
     this.setState({
       input: `${this.state.input.trim()}${emoji} `,
     });
@@ -1330,31 +1356,49 @@ export default class Room extends Component {
     // }, 500)
   };
 
-  memberAtChose = (m) => {
+  memberAtChose = (m, event) => {
+    const curInputVal = this.state.input; // 当前input值
+    const start = this.state.input.length - 1;
+    const newvalue = `${this.state.input}${m.name} `;
+    const end = newvalue.length - 1;
+    const idlist = [...this.state.idlist, m.id];
+    const signals = [...this.state.signals, {
+      start,
+      end,
+      type: '@',
+      val: m.id,
+    }];
     // this.setState({
     //   showMemberAt: false,
     //   inputFocus: true,
     //   input: `@${m.name}`,
     //   atingMember: false,
     // })
-    const newvalue = `${this.state.input}${m.name} `;
-    this.setState({
-      // showMemberAt: false,
-      input: newvalue,
-      // inputFocus: true,
-    });
+    // const newvalue = `${this.state.input}${m.name} `;
+    
     setTimeout(() => {
       this.setState({
         showMemberAt: false,
-        // inputFocus: true,
-      },() => {
-        this.setState({
-          atingMember: false,
-          inputFocus: true,
-          cursorPosition: newvalue.length,
-        })
-      })
-    }, 200);
+        idlist,
+        signals,
+        input: newvalue,
+        inputFocus: true,
+        cursorPosition: newvalue.length,
+      });
+    }, 250);
+    event.preventDefault();
+    // setTimeout(() => {
+    //   this.setState({
+    //     showMemberAt: false,
+    //     // inputFocus: true,
+    //   },() => {
+    //     this.setState({
+    //       atingMember: false,
+    //       inputFocus: true,
+    //       cursorPosition: newvalue.length,
+    //     })
+    //   })
+    // }, 200);
     // event.preventDefault();
   }
 
@@ -1704,8 +1748,9 @@ export default class Room extends Component {
       roomType: '',
       orderInfo: {},
     };
-    console.log('room member: ', members);
-    const filtermembers = members.filter(e => e.name.indexOf(memberAtFilte) > -1);
+    // console.log('room member: ', members);
+    const realyMembers = members.filter(e => e.name.indexOf(memberAtFilte) > -1);
+    const filtermembers = [{ id: '@all', name: '所有人' }, ...realyMembers];
     console.log('filtermembers: ', filtermembers);
     const { channelId } = this.$router.params || {};
     // console.log('DEBUG this.$router.params => channelId', channelId);
@@ -1713,8 +1758,8 @@ export default class Room extends Component {
     const { dispatchState, questionType } = dispatchInfo;
     const scrollViewHeight = this.getScrollHeight();
     const curTimeline = this.state.timeline || [];
-    console.log('========curTimeline========');
-    console.log(curTimeline);
+    // console.log('========curTimeline========');
+    // console.log(curTimeline);
     const {
       APP_NAME,
       CUSTOM_CONFIG: { DISPATCH_TIMEOUT_REDIRECT: redirectType },
@@ -1905,11 +1950,16 @@ export default class Room extends Component {
                         return (
                           <View 
                             key={ m.id }
-                            onClick={this.memberAtChose.bind(this,m)}>
-                            <View className="members-item">
-                              <Avatar url={m.avatar} size={60}></Avatar>
+                            className="members-item"
+                            onClick={this.memberAtChose.bind(this, m)}>
+                            <View className="members-item-l">
+                              {
+                                m.id === '@all' ? 
+                                (<Avatar className="item-img" url={ AtAllImg } size={60} radius></Avatar>) :
+                                (<Avatar className="item-img" url={m.avatar} size={60} radius></Avatar>)
+                              }
                             </View>
-                            {m.name}
+                            <View className="item-name-r">{ m.name }</View>
                           </View>
                         )
                       })

@@ -292,7 +292,7 @@ export default class TimelineModule extends BaseModel {
   }
 
   private getTimelineFromTimelineWindow = (roomId, createTime,timelineWindow) =>{
-    console.log('=========getTimelineFromTimelineWindow=========');
+    // console.log('=========getTimelineFromTimelineWindow=========');
     console.log(timelineWindow.getEvents());
     const orginTimeline = timelineWindow.getEvents().filter(this.messageFilter).map(this.buildMessage);
     // console.log(orginTimeline);

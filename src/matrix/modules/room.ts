@@ -26,7 +26,7 @@ export default class RoomModule extends BaseModule {
   }
 
   private handleRoomUpdate = (roomId:string) => {
-    // console.log('handleRoomUpdate');
+    console.log('handleRoomUpdate', roomId);
     const mxRoom = this.mxClient.getRoom(roomId);
     // console.log(mxRoom);
     if (!mxRoom) return;

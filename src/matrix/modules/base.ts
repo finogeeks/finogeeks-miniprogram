@@ -28,13 +28,24 @@ class BaseModule {
   }
 
   protected buildRoom = (mxRoom):Room => {
+    // console.log(mxRoom)
     try {
       if (!mxRoom) return null;
       const roomState = mxRoom.currentState;
       const me = roomState.getMember(this.myUserId);
       const powerEvent = roomState.getStateEvents('m.room.power_levels', '');
       const meta = this.getRoomMeta(mxRoom);
-
+      const roomRule = this.mxClient.getRoomPushRule('global', mxRoom.roomId);
+      
+      // 新增新的静音状态字段
+      let muteStatus = 'default';
+      if (roomRule && roomRule.enabled && roomRule.actions.length) {
+        const { actions = [] } = roomRule;
+        if (actions.indexOf('dont_notify') > -1) muteStatus = 'mute';
+        if (actions.indexOf('prohibit_notify') > -1) muteStatus = 'prohibit';
+        if (actions.indexOf('fold_notify') > -1) muteStatus = 'fold_mute';
+      }
+      const isMute = muteStatus !== 'default';
       const id = mxRoom.roomId;
       const name = meta.roomName;
       const avatar = meta.roomAvatar;
@@ -118,6 +129,7 @@ class BaseModule {
         isSecret, // 是否保密房间
         isGroup: !(isChannel || isDirect), // 是否群聊
         powerLevel: me && me.powerLevel, // 房间中个人权限 100为管理员
+        isMute,
       };
     } catch(e) {
       console.log('~~~~~~~~~buildRoom error~~~~~~~~~~~~`', e);
