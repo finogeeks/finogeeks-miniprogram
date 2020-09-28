@@ -9,7 +9,8 @@ const extInfo = {
   "ext": {
     "APP_ID": "wxb18a9206964a2af0",
     "APP_NAME": "Finchat",
-    "BASE_URL": "https://finchat-dev.finogeeks.club",
+    "BASE_URL": "https://api.finogeeks.club",
+    // "BASE_URL": "https://finchat-dev.finogeeks.club",
     "INTRO": "在线咨询",
     "WELCOME": "欢迎登陆",
     "THEME_COLOR": {

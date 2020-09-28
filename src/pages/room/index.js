@@ -1749,9 +1749,8 @@ export default class Room extends Component {
       orderInfo: {},
     };
     // console.log('room member: ', members);
-    const realyMembers = members.filter(e => e.name.indexOf(memberAtFilte) > -1);
+    const realyMembers = members.filter(e => e.name.indexOf(memberAtFilte) > -1).filter(val => val.id !== this.myId);
     const filtermembers = [{ id: '@all', name: '所有人' }, ...realyMembers];
-    console.log('filtermembers: ', filtermembers);
     const { channelId } = this.$router.params || {};
     // console.log('DEBUG this.$router.params => channelId', channelId);
 

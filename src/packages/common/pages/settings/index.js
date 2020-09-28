@@ -3,7 +3,6 @@ import { View } from '@tarojs/components';
 import ListItem from '@/components/list-item';
 import extInfo from '@/utils/ext';
 import { version } from '@/utils/version';
-import NavBar from '@/components/nav-bar';
 import './index.scss';
 
 export default class Settings extends Component {
@@ -29,13 +28,15 @@ export default class Settings extends Component {
   };
 
   render() {
+    const accountInfo = Taro.getAccountInfoSync();
+    console.log('accountInfo', accountInfo)
     return (
       <View className='index'>
         {/* <NavBar showBackBtn={true} title={'设置'} onClickBack={this.handleClickBack} /> */}
         <View className='container'>
           <ListItem
             name='版本信息'
-            statusText={`v${version}`}
+            statusText={`v${accountInfo.miniProgram.version || 'dev'}`}
             padding={60}
           ></ListItem>
         </View>
