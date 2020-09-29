@@ -29,14 +29,13 @@ export default class Settings extends Component {
 
   render() {
     const accountInfo = Taro.getAccountInfoSync();
-    console.log('accountInfo', accountInfo)
     return (
       <View className='index'>
         {/* <NavBar showBackBtn={true} title={'设置'} onClickBack={this.handleClickBack} /> */}
         <View className='container'>
           <ListItem
             name='版本信息'
-            statusText={`v${accountInfo.miniProgram.version || 'dev'}`}
+            statusText={`${accountInfo.miniProgram.version || 'dev'}`}
             padding={60}
           ></ListItem>
         </View>
