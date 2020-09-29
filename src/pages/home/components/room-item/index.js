@@ -138,8 +138,10 @@ class RoomItem extends Component {
           <View className='info'>
             <View className='title'>
               <View className='room-name'>{name}</View>
-              {isCrossDomain ? (
-                <View className='headwear'>外部</View>
+              {
+              isCrossDomain ? (
+                ''
+                // <View className='headwear'>外部</View>
               ) 
               // : isChannel && federate ? (
               //   <View className='headwear'>共享</View>
@@ -151,7 +153,8 @@ class RoomItem extends Component {
               //   <View className='headwear'>私密</View>
               // ) 
               : isGroup && isSecret ? (
-                <View className='headwear'>保密</View>
+                ''
+                // <View className='headwear'>保密</View>
               ) : another ? (
                 <View className='headwear-bot'>BOT</View>
               ) : ''}
